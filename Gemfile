@@ -75,3 +75,4 @@ end
 gem "devise"
 gem 'rails_admin'
 gem 'webpacker'
+gem 'dotenv-rails'
