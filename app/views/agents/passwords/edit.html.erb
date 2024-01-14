@@ -1,0 +1,27 @@
+<div class="form-section" style="max-width: 600px; margin: auto;">
+  <h2>Change your password</h2>
+
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: "form-floating" }) do |f| %>
+    <%= render "agents/shared/error_messages", resource: resource %>
+    <%= f.hidden_field :reset_password_token %>
+
+    <div class="form-floating mb-3">
+      <%= f.password_field :password, autofocus: true, autocomplete: "new-password", placeholder: "New password", class: "form-control", id: "floatingNewPassword" %>
+      <%= f.label :password, "New password", class: "form-label" %>
+      <% if @minimum_password_length %>
+        <small class="form-text text-muted"><%= @minimum_password_length %> characters minimum</small>
+      <% end %>
+    </div>
+
+    <div class="form-floating mb-3">
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm new password", class: "form-control", id: "floatingPasswordConfirmation" %>
+      <%= f.label :password_confirmation, "Confirm new password", class: "form-label" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Change my password", class: "btn btn-primary w-100" %>
+    </div>
+  <% end %>
+
+  <%= render "agents/shared/links" %>
+</div>
