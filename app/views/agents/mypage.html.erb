@@ -34,12 +34,14 @@
                 </a>
                 <!-- End::header-link|dropdown-toggle -->
                 <ul class="main-header-dropdown dropdown-menu pt-0 overflow-hidden header-profile-dropdown dropdown-menu-end" aria-labelledby="mainHeaderProfile">
-                    <%= link_to edit_agent_registration_path, class: "dropdown-item d-flex align-items-center", target: "_blank" do %>
+                    <%= link_to edit_agent_registration_path, class: "dropdown-item d-flex align-items-center" do %>
                         <i class="bi bi-person fs-18 me-2 op-7"></i>Profile
                     <% end %>
-                    <li><a class="dropdown-item d-flex align-items-center" ><i class="bi bi-check-square fs-16 me-2 op-7"></i>Task Manager</a></li>
+                    <%= link_to task_agent_path(@agent), class: "dropdown-item d-flex align-items-center" do %>
+                        <i class="bi bi-check-square fs-16 me-2 op-7"></i>Task Manager
+                    <% end %>
                     <li>
-                        <%= link_to "https://lin.ee/RdJmOTD", class: "dropdown-item d-flex align-items-center", target: "_blank" do %>
+                        <%= link_to "https://lin.ee/RdJmOTD", class: "dropdown-item d-flex align-items-center" do %>
                             <i class="bi bi-headset fs-18 me-2 op-7"></i>Support
                         <% end %>
                     </li>

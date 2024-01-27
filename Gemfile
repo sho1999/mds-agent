@@ -77,3 +77,4 @@ gem 'webpacker'
 gem 'dotenv-rails'
 gem 'sqlite3', '~> 1.4'
 gem "aws-sdk-s3", require: false
+gem 'unicorn'

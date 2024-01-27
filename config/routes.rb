@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :agents, only: [:index, :show] do
     member do
       get 'mypage'
+      get 'task'
     end
   end
 
