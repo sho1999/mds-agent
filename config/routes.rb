@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     member do
       get 'mypage'
       get 'task'
+      get 'top'
     end
   end
 
@@ -30,5 +31,5 @@ Rails.application.routes.draw do
 
 
   # Defines the root path route ("/")
-  root "agents#mypage"
+  root "agents#top"
 end

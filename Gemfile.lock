@@ -323,7 +323,7 @@ DEPENDENCIES
   dotenv-rails
   importmap-rails
   jbuilder
-  pg
+  pg (~> 1.2)
   puma (>= 5.0)
   rails (~> 7.1.2)
   rails_admin

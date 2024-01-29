@@ -37,5 +37,8 @@ class AgentsController < ApplicationController
   def task
     @agent = current_agent
   end
+
+  def top
+  end
 end
   

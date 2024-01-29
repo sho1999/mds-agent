@@ -46,7 +46,7 @@
                         <% end %>
                     </li>
                     <li>
-                        <%= button_to destroy_agent_session_path, method: :delete, class: "dropdown-item d-flex align-items-center" do %>
+                        <%= button_to destroy_agent_session_path(@agent), method: :delete, class: "dropdown-item d-flex align-items-center" do %>
                             <i class="bi bi-box-arrow-right fs-18 me-2 op-7"></i>Log Out
                         <% end %>
                     </li>
