@@ -45,7 +45,7 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 group :production do
-  # gem "pg", "~> 1.2"
+  gem "pg", "~> 1.2"
 end
 
 group :development, :test do
@@ -78,4 +78,3 @@ gem 'dotenv-rails'
 gem 'sqlite3', '~> 1.4'
 gem "aws-sdk-s3", require: false
 gem 'unicorn'
-gem 'pg'
