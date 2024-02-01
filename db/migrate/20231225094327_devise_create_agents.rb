@@ -20,11 +20,10 @@ class DeviseCreateAgents < ActiveRecord::Migration[7.1]
       t.string   :rank
       t.string   :role
       t.string   :name
-      t.integer  :monthly_dm_target
-      t.integer  :monthly_appointment_target
-      t.integer  :monthly_contract_target
-
-
+      t.integer  :monthly_dm_target, default: 500
+      t.integer  :monthly_appointment_target, default: 10
+      t.integer  :monthly_contract_target, default: 4
+      t.boolean  :first_login, default: true
 
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false

@@ -4325,7 +4325,7 @@
   color: rgb(var(--primary-rgb));
 }
 .btn-primary-transparent:hover,
-.btn-primary-transparent:focus:hover {
+.-transparent:focus:hover {
   background-color: rgb(var(--primary-rgb));
   border-color: rgb(var(--primary-rgb));
   color: #fff;

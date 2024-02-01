@@ -22,16 +22,17 @@ class AgentsController < ApplicationController
     @dms_data = all_dates.map { |date| data_by_date[date]&.dig(:dms) || 0 }
     @appointments_data = all_dates.map { |date| data_by_date[date]&.dig(:appointments) || 0 }
   
-    # 月間の合計を計算
+    #初期化
     @total_dms_this_month = @daily_reports.sum(:dms)
     @total_appointments_this_month = @daily_reports.sum(:appointments)
     @total_contracts_this_month = @daily_reports.sum(:contracts)
     
-     # 月間契約数と全期間契約数の合計
+    #月間契約数と全期間契約数の合計
     @total_contracts = @agent.total_contracts
     @total_appointments = @agent.total_appointments
     @total_dms = @agent.total_dms
 
+    @current_level, @level_progress = @agent.calculate_progress
   end
 
   def task
@@ -40,5 +41,10 @@ class AgentsController < ApplicationController
 
   def top
   end
+
+  def onboarding
+    @agent = current_agent
+  end
+
 end
   

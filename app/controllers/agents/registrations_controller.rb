@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Agents::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
@@ -50,13 +48,16 @@ class Agents::RegistrationsController < Devise::RegistrationsController
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   # end
 
-  # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
-
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  protected
+
+  # 新規登録後のリダイレクト先をカスタマイズ
+  def after_sign_up_path_for(resource)
+    resource.update(first_login: false)
+    onboarding_agent_path(resource) # オンボーディングページへリダイレクト
+  end
 end

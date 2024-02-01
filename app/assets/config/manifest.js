@@ -1,1 +1,1 @@
-//= link task_01.jpg
+//= link_tree ../images

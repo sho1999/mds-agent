@@ -24,11 +24,11 @@ Rails.application.routes.draw do
       get 'mypage'
       get 'task'
       get 'top'
+      get 'onboarding'
     end
   end
 
   resources :daily_reports, only: [:new, :create]
-
 
   # Defines the root path route ("/")
   root "agents#top"

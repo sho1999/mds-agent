@@ -72,7 +72,7 @@ group :test do
 end
 
 gem "devise"
-gem 'rails_admin'
+gem 'rails_admin', '~> 3.0'
 gem 'webpacker'
 gem 'dotenv-rails'
 gem 'sqlite3', '~> 1.4'

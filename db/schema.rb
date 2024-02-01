@@ -35,9 +35,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_25_094343) do
     t.string "rank"
     t.string "role"
     t.string "name"
-    t.integer "monthly_dm_target"
-    t.integer "monthly_appointment_target"
-    t.integer "monthly_contract_target"
+    t.integer "monthly_dm_target", default: 500
+    t.integer "monthly_appointment_target", default: 10
+    t.integer "monthly_contract_target", default: 4
+    t.boolean "first_login", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_agents_on_email", unique: true
