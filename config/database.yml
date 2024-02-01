@@ -22,10 +22,6 @@ test:
 
 production:
   <<: *default
-  adapter: postgresql
-  encoding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   database: postgres
   username: postgres
-  password: <%= ENV['POSTGRES_PASSWORD'] %>
-  host: localhost
+  password: <%= ENV["POSTGRES_DATABASE_PASSWORD"] %>
