@@ -45,7 +45,7 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 group :production do
-  gem "pg", "~> 1.2"
+  gem 'pg', '~> 1.2.3'
 end
 
 group :development, :test do
