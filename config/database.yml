@@ -22,6 +22,11 @@ test:
 
 production:
   <<: *default
+  adapter: postgresql
   database: postgres
   username: postgres
   password: <%= ENV["POSTGRES_DATABASE_PASSWORD"] %>
+  host: localhost 
+  port: 5432
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
