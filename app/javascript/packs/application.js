@@ -16,4 +16,4 @@ import "node-waves"
 import SimpleBar from 'simplebar'; // SimpleBarをインポート
 import Pickr from '@simonwep/pickr'; // Pickrをインポート
 import ApexCharts from 'apexcharts'; // ApexChartsをインポート
-
+import '../stylesheets/rails_admin.scss';

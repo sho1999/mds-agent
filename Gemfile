@@ -72,9 +72,10 @@ group :test do
 end
 
 gem "devise"
-gem 'rails_admin', '~> 3.0'
+gem 'rails_admin', '~> 3.1.2'
 gem 'webpacker'
 gem 'dotenv-rails'
 gem 'sqlite3', '~> 1.4'
 gem "aws-sdk-s3", require: false
 gem 'unicorn'
+gem 'sassc-rails'
