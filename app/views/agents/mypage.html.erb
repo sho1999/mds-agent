@@ -49,18 +49,23 @@
                 <div class="dropdown">
                     <div class="menu-dropdown d-flex justify-content-between align-items-center dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                         <div>
-                            <p class="fw-medium fs-20 mb-0">Welcome! <span><%= @agent.name %>さん</span></p>
+                            <p class="fw-medium fs-20 mb-0"><span><%= @agent.name %>さん</span></p>
                             <p class="fs-13 text-muted mb-0">ID : <%= @agent.agent_id %></p>
                         </div>
                     </div>
 
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <%= link_to edit_agent_registration_path, class: "dropdown-item d-flex align-items-center" do %>
-                        <i class="bi bi-person fs-18 me-2 op-7"></i>Profile
+                            <i class="bi bi-person fs-18 me-2 op-7"></i>Profile
                         <% end %>
+                        <%= link_to "javascript:void(0);", class: "dropdown-item d-flex align-items-center" do %>
+                            <i class="bi bi-check-square fs-16 me-2 op-7"></i>Task Manager
+                        <% end %>
+                        <!--
                         <%= link_to task_agent_path(@agent), class: "dropdown-item d-flex align-items-center" do %>
-                        <i class="bi bi-check-square fs-16 me-2 op-7"></i>Task Manager
+                            <i class="bi bi-check-square fs-16 me-2 op-7"></i>Task Manager
                         <% end %>
+                        -->
                         <li>
                         <%= link_to "https://lin.ee/RdJmOTD", class: "dropdown-item d-flex align-items-center" do %>
                             <i class="bi bi-headset fs-18 me-2 op-7"></i>Support

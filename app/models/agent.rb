@@ -7,7 +7,6 @@ class Agent < ApplicationRecord
   has_many :daily_reports
 
   validates :agent_id, presence: true, length: { is: 9 }, numericality: { only_integer: true }
-  validates :password, length: { minimum: 1 } 
 
   def total_contracts
     DailyReport.where(agent_id: id).sum(:contracts)

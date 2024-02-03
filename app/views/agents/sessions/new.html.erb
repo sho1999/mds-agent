@@ -1,8 +1,8 @@
-<div class="form-section" style="max-width: 600px; margin: auto;">
+<div class="form-section" style="width: 350px; margin: auto;">
   <h2>Log in</h2>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-floating" }) do |f| %>
-    <div class="form-floating mb-3" style="width: 400px; margin: auto;">
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email address", class: "form-control", id: "floatingInput" %>
+    <div class="form-floating mb-3">
+      <%= f.email_field :email, autocomplete: "email", placeholder: "Email address", class: "form-control", id: "floatingInput" %>
       <%= f.label :email, "Email address", class: "form-label" %>
     </div>
 
