@@ -1,0 +1,524 @@
+
+<div class="overlay">
+    <div class="onboarding-material">
+        <div id="carouselExampleIndicators" class="carousel slide custom-carousel" data-ride="carousel" data-interval="false">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="carousel-content">
+                        <%= image_tag 'onboarding_slide1_01.png', class: 'd-block w-50', alt: 'First slide' %>
+                        <h3 >MDS GAMEの使い方を知ろう</h3>
+                        <p>私たちは楽しく収益化ができるよう<br>代理店活動をゲームにしました。<br>
+                            1つ1つタスクをこなしながら<br>目標の収益を達成しましょう。</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-content">
+                        <%= image_tag 'onboarding_slide1_02.png', class: 'd-block', alt: 'First slide' %>
+                        <p>使い方はとてもシンプルです。<br>毎日の活動を記入するだけ！</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-content">
+                        <%= image_tag 'onboarding_slide1_03.png', class: 'd-block', alt: 'First slide' %>
+                        <p>毎日の活動によりポイントが貯まり、<br>代理店レベルが上がります。</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-content">
+                        <%= image_tag 'onboarding_slide1_04.png', class: 'd-block', alt: 'First slide' %>
+                        <p>嘘はよくないですが、<br>今日だけ特別に報告をしてみましょう！<br>例 DM数：30、アポ数：1、契約数：0</p>
+                        <%= link_to '報告してみる', new_daily_report_path(@agent), class: 'btn btn-light w-100' %>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-controls">
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <i class="bi bi-arrow-left"></i> 
+                </a>
+
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <i class="bi bi-arrow-right"></i> 
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+    
+<style>
+    .overlay {
+        position: fixed; /* ページ上に固定 */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5); /* 半透明の黒で画面を暗くする */
+        z-index: 1040; /* モーダルより少し下 */
+    }
+
+    .onboarding-material {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1050; /* モーダルより上 */
+    /* 必要に応じてサイズ、パディング、背景色などのスタイルを追加 */
+    }
+
+    .custom-carousel .carousel-content {
+        padding: 20px; /* 必要に応じて内部のパディングを調整 */
+        background-color: white;
+        width: 400px;
+        text-align: center; /* テキストを中央揃えに */
+        border-radius: 10px;
+    }
+
+    @media (max-width: 576px) {
+        .custom-carousel .carousel-content {
+            max-width: 95vw;
+        }
+    }
+
+    /* カルーセルのナビゲーションボタンのスタイル */
+    .carousel-control-prev,
+    .carousel-control-next,
+    .carousel-control-prev:hover,
+    .carousel-control-next:hover,
+    .carousel-control-prev:focus,
+    .carousel-control-next:focus,
+    .carousel-control-prev:active,
+    .carousel-control-next:active {
+        position: static; /* ボタンの位置を静的に変更 */
+        margin-top: 20px; /* スライド下に余白を追加 */
+        opacity: 1; /* ボタンを完全に不透明にする */
+        color: #007bff; /* ボタンの色を青に設定 */
+        background: white;
+        padding: 5px 10px;
+        text-decoration: none;
+        display: inline-block;
+        width: 50px;
+        border-radius: 7px;
+    }
+
+    .carousel-control-prev {
+        margin-right: 10px;
+    }
+
+    .carousel-controls {
+        display: flex;
+        justify-content: flex-end; /* 右寄せにする */
+    }
+
+    /* アイコンのスタイル */
+    .bi {
+        font-size: 20px; /* アイコンのサイズ */
+    }
+
+    .carousel-content img {
+        width: 80%;
+        margin: 10px auto; /* 上下にマージンを設定し、左右は自動で中央揃え */
+        display: block; /* 画像をブロック要素に */
+        margin-bottom: 20px;
+    }
+
+    .custom-progress {
+        height: 25px; /* 例としての高さ */
+        margin-top: 10px;
+    }
+    
+    .agent-level-title {
+        font-size: 32px;
+        font-weight: 500;
+    }
+
+</style>
+
+
+
+<div class="page">
+         <!-- app-header -->
+    <style>
+    .custom-header {
+        background-color: white;
+        border-bottom: 1px solid #ddd;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        height: 60px;
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 40px; 
+        }
+    </style>
+    <header class="custom-header">
+        <div class="main-header-container">
+            <li class="header-element">
+                <!-- Start::header-link|dropdown-toggle -->
+                <a href="javascript:void(0);" class="header-link dropdown-toggle" id="mainHeaderProfile" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                    <div class="d-flex align-items-center">
+                        <div class="me-sm-2 me-0">
+                            <%# <img src="../assets/images/faces/9.jpg" alt="img" class="avatar avatar-sm avatar-rounded"> %>
+                        </div>
+                        <div class="d-xl-block d-none lh-1">
+                            <span class="fw-medium lh-1"><%= @agent.name%></span>
+                        </div>
+                    </div>
+                </a>
+                <!-- End::header-link|dropdown-toggle -->
+                <ul class="main-header-dropdown dropdown-menu pt-0 overflow-hidden header-profile-dropdown dropdown-menu-end" aria-labelledby="mainHeaderProfile">
+                    <%= link_to edit_agent_registration_path, class: "dropdown-item d-flex align-items-center" do %>
+                        <i class="bi bi-person fs-18 me-2 op-7"></i>Profile
+                    <% end %>
+                    <%= link_to task_agent_path(@agent), class: "dropdown-item d-flex align-items-center" do %>
+                        <i class="bi bi-check-square fs-16 me-2 op-7"></i>Task Manager
+                    <% end %>
+                    <li>
+                        <%= link_to "https://lin.ee/RdJmOTD", class: "dropdown-item d-flex align-items-center" do %>
+                            <i class="bi bi-headset fs-18 me-2 op-7"></i>Support
+                        <% end %>
+                    </li>
+                    <li>
+                        <%= button_to destroy_agent_session_path(@agent), method: :delete, class: "dropdown-item d-flex align-items-center" do %>
+                            <i class="bi bi-box-arrow-right fs-18 me-2 op-7"></i>Log Out
+                        <% end %>
+                    </li>
+                </ul>
+            </li>            
+        </div>
+    </header>
+
+
+        <!-- Start::app-content -->
+        <div class="main-content">
+            <div class="container-fluid">
+
+                <!-- Start::page-header -->
+
+                <div class="d-flex align-items-center justify-content-between my-4 page-header-breadcrumb flex-wrap gap-2">
+                    <div >
+                        <p class="fw-medium fs-20 mb-0">Welcome! <span><%= @agent.name %>さん</span></p>
+                        <p class="fs-13 text-muted mb-0">ID : <%= @agent.agent_id %></p>
+                    </div>
+                    <%= link_to new_daily_report_path, class: "btn btn-secondary-light btn-wave" do %>
+                        <i class="ri-file-chart-line align-middle"></i> Dailyレポートを作成
+                    <% end %>
+                </div>
+
+                <!-- End::page-header -->
+
+                <!-- Start::row-1 -->
+                <div class="row">
+                    <div class="col-md-12 col-xl-12">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-3 col-xl-3">
+                                <div class="card custom-card overflow-hidden">
+                                    <div class="card-body pr-0 pl-0">
+                                        <div class="mb-2 p-3 pb-0">
+                                            <div class="flex-fill fs-15">合計契約数</div>
+                                        </div>
+                                        <div class="d-flex align-items-center ps-3">
+                                            <div class="flex-fill">
+                                                <div class="fs-25 fw-normal mb-2"><%= 12 %></div>
+                                                <p class="mb-0">
+                                                    <i class="ri-arrow-up-line text-primary fs-15 align-middle"></i>
+                                                    <span  class="text-primary fs-12"> 26.35% last month</span>
+                                                </p>
+                                            </div>
+                                            <div id="sales-card" class="crm-card-chart"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-3 col-xl-9">
+                                <div class="card custom-card overflow-hidden">
+                                    <div class="card-body">
+                                        <div class="mb-2">
+                                            <div class="flex-fill fs-15">代理店レベル</div>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-end">
+                                            <span class="agent-level-title">Lv. <%= 1 %></span>
+                                            <span>Lv. <%= 1 + 1 %></span>
+                                        </div>
+                                        <div class="progress custom-progress">
+                                            <div class="progress-bar custom-progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><%= @level_progress %>%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End::row-1 -->
+
+                
+                <!-- Start::row-2 -->
+                <div class="row d-flex align-items-stretch">
+                    <div class="col-lg-12 col-xxl-3">
+                        <div class="card custom-card overflow-hidden" style="height: 400px;">
+                            <div class="card-header justify-content-between">
+                                <div class="card-title">今月の目標達成度</div>
+                                <div class="dropdown">
+                                    <a aria-label="anchor" href="javascript:void(0);" data-bs-toggle="dropdown">
+                                        <i class="ri-more-fill fs-18 text-muted"></i>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a class="dropdown-item" href="javascript:void(0);">Action</a></li>
+                                        <li><a class="dropdown-item" href="javascript:void(0);">Another Action</a></li>
+                                        <li><a class="dropdown-item" href="javascript:void(0);">Something Else</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body pb-0">
+                                <ul class="list-unstyled visitors-country">
+                                    <li>
+                                        <div class="d-flex align-items-center"> 
+                                            <div class="flex-fill">
+                                                <div class="d-flex align-items-center justify-content-between mb-2">                                                
+                                                <span class="d-block fs-14">DM数 (20%)</span>
+                                                <span class="d-block fs-12 text-muted">100/500</span>
+                                                </div>
+                                                <div class="progress progress-animate progress-xs" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                                <div class="progress-bar progress-bar-striped bg-primary" style="width: 20%;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="d-flex align-items-center"> 
+                                            <div class="flex-fill">
+                                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                                <span class="d-block fs-14">アポ数 (33%)</span>
+                                                <span class="d-block fs-12 text-muted">3/10</span>
+                                                </div>
+                                                <div class="progress progress-animate progress-xs" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                                <div class="progress-bar progress-bar-striped bg-secondary" style="width: 33%;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="d-flex align-items-center"> 
+                                            <div class="flex-fill">
+                                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                                <span class="d-block fs-14">契約数 (50%)</span>
+                                                <span class="d-block fs-12 text-muted">2/4</span>
+                                                </div>
+                                                <div class="progress progress-animate progress-xs" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                                <div class="progress-bar progress-bar-striped bg-warning" style="width: 50%;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="d-flex align-items-center">
+                                    <div class="card-body pb-0 pl-0 pr-0">
+                                        <div class="row border-top border-block-start-dashed">
+                                            <div class="col border-end border-inline-end-dashed">
+                                                <div class="text-center p-3">
+                                                    <span class="fs-14 visit-gender male">DM > アポ</span>
+                                                    <div class="mt-1">
+                                                        <span class="fs-18">3%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col border-inline-end-dashed">
+                                                <div class="text-center p-3">
+                                                    <span class="fs-14 visit-gender female">アポ > 契約</span>
+                                                    <div class="mt-1">
+                                                        <span class="fs-18">66%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="text-center">
+                                    <a href="javascript:void(0);" class="text-secondary">Full Details <i class="ri-share-box-line align-middle"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-xxl-9">
+                        <div class="card custom-card overflow-hidden" style="height: 400px;">
+                            <div class="card-header justify-content-between">
+                                <div class="card-title">
+                                    月間レポート
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div id="earning-reports"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+<!-- Scroll To Top -->
+<div class="scrollToTop">
+    <span class="arrow"><i class="ti ti-arrow-narrow-up fs-20"></i></span>
+</div>
+<div id="responsive-overlay"></div>
+
+<script>
+/* Earning Reports Chart */
+var options = {
+  series: [
+    {
+      name: "DM数",
+      data: [15, 30, 22, 49, 32, 45, 30, 45, 65, 45, 25, 45],
+    },
+    {
+      name: "アポ数",
+      data: [8, 40, 15, 32, 45, 30, 20, 25, 18, 23, 20, 40],
+    }
+  ],
+  chart: {
+    type: "area",
+    height: 318,
+    toolbar: {
+      show: false
+    }
+  },
+  colors: [
+    "var(--primary-color)",
+    "rgb(69, 214, 91)",
+  ],
+  fill: {
+    type: 'gradient',
+    gradient: {
+      shadeIntensity: 1,
+      opacityFrom: 0.4,
+      opacityTo: 0.1,
+      stops: [0, 90, 100],
+      colorStops: [
+        [
+          {
+            offset: 0,
+            color: "var(--primary01)",
+            opacity: 50
+          },
+          {
+            offset: 75,
+            color: "var(--primary01)",
+            opacity: 0.1
+          },
+          {
+            offset: 100,
+            color: 'transparent',
+            opacity: 0.1
+          }
+        ],
+        [
+          {
+            offset: 0,
+            color: 'rgba(69, 214, 91, 0.1)',
+            opacity: 1
+          },
+          {
+            offset: 75,
+            color: 'rgba(69, 214, 91, 0.1)',
+            opacity: 0.1
+          },
+          {
+            offset: 100,
+            color: 'transparent',
+            opacity: 1
+          }
+        ],
+      ]
+    }
+  },
+  dataLabels: {
+    enabled: false,
+  },
+  legend: {
+    show: true,
+    position: "top",
+    offsetX: 0,
+    offsetY: 8,
+    markers: {
+      width: 5,
+      height: 5,
+      strokeWidth: 0,
+      strokeColor: '#fff',
+      fillColors: undefined,
+      radius: 12,
+      customHTML: undefined,
+      onClick: undefined,
+      offsetX: 0,
+      offsetY: 0
+    },
+  },
+  stroke: {
+    curve: 'smooth',
+    width: [1, 1],
+    lineCap: 'round',
+  },
+  grid: {
+    borderColor: "#edeef1",
+    strokeDashArray: 2,
+  },
+  yaxis: {
+    axisBorder: {
+      show: true,
+      color: "rgba(119, 119, 142, 0.05)",
+      offsetX: 0,
+      offsetY: 0,
+    },
+    axisTicks: {
+      show: true,
+      borderType: "solid",
+      color: "rgba(119, 119, 142, 0.05)",
+      width: 6,
+      offsetX: 0,
+      offsetY: 0,
+    },
+    labels: {
+      formatter: function (y) {
+        return y.toFixed(0) + "";
+      },
+    },
+  },
+  xaxis: {
+    type: "month",
+    categories: [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "sep",
+      "oct",
+      "nov",
+      "dec",
+    ],
+    axisBorder: {
+      show: false,
+      color: "rgba(119, 119, 142, 0.05)",
+      offsetX: 0,
+      offsetY: 0,
+    },
+    axisTicks: {
+      show: false,
+      borderType: "solid",
+      color: "rgba(119, 119, 142, 0.05)",
+      width: 6,
+      offsetX: 0,
+      offsetY: 0,
+    },
+    labels: {
+      rotate: -90,
+    },
+  },
+};
+var chart4 = new ApexCharts(document.querySelector("#earning-reports"), options);
+chart4.render();
+/* Earning Reports Chart */
+</script>

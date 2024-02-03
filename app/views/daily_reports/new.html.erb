@@ -1,0 +1,58 @@
+<div class="form-section" style="max-width: 600px; margin: auto;">
+    <div class="container-fluid">
+        <%= form_with(model: @daily_report, local: true, html: { class: 'form-section' }) do |form| %>
+        <% if @daily_report.errors.any? %>
+            <div id="error_explanation" class="card custom-card">
+            <div class="card-header justify-content-between">
+                <div class="card-title">
+                <h2><%= pluralize(@daily_report.errors.count, "error") %> が検出されました:</h2>
+                </div>
+            </div>
+            <div class="card-body">
+                <ul>
+                <% @daily_report.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+                </ul>
+            </div>
+            </div>
+        <% end %>
+
+        <div class="card custom-card">
+            <div class="card-header justify-content-between">
+                <div class="card-title">
+                    活動報告
+                </div>
+            </div>
+            <div class="card-body">
+                
+                <div class="mb-3">
+                    <div class="input-group mb-3" style="width: 300px">
+                    <div class="input-group-text"><i class="ri-calendar-line"></i></div>
+                        <%= form.date_field :date, id: 'form-date', class: 'form-control', value: Date.today.strftime('%Y-%m-%d'), placeholder: '日付を選択' %>
+                    </div>
+
+                    <div class="input-group mb-3">
+                    <div class="input-group-text"><i class="ri-send-plane-2-line"></i></div>
+                        <%= form.number_field :dms, id: 'form-appointments', class: 'form-control', placeholder: 'DM送信数' %>
+                    </div>
+
+                    <div class="input-group mb-3">
+                    <div class="input-group-text"><i class="ri-calendar-check-line"></i></div>
+                        <%= form.number_field :appointments, id: 'form-appointments', class: 'form-control', placeholder: 'アポ数' %>
+                    </div>
+
+                    <div class="input-group mb-3">
+                    <div class="input-group-text"><i class="ri-star-smile-line"></i></div>
+                        <%= form.number_field :contracts, id: 'form-appointments', class: 'form-control', placeholder: '契約数' %>
+                    </div>
+
+                     <div class="actions">
+                        <%= form.submit "送信する", class: 'btn btn-primary btn-lg w-100' %>
+                    </div>
+                </div>
+                <%= link_to "戻る", :back, class: "btn" %>
+            </div>
+        <% end %>
+    </div>
+</div>
