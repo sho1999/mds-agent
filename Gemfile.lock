@@ -333,7 +333,7 @@ DEPENDENCIES
   pg (~> 1.2.3)
   puma (>= 5.0)
   rails (~> 7.1.2)
-  rails_admin (~> 3.1.2)
+  rails_admin
   sassc-rails
   selenium-webdriver
   sprockets-rails
@@ -343,7 +343,7 @@ DEPENDENCIES
   tzinfo-data
   unicorn
   web-console
-  webpacker
+  webpacker (~> 5)
 
 RUBY VERSION
    ruby 3.1.4p223

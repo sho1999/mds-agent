@@ -72,8 +72,8 @@ group :test do
 end
 
 gem "devise"
-gem 'rails_admin', '~> 3.1.2'
-gem 'webpacker'
+gem 'rails_admin'
+gem 'webpacker', '~> 5'
 gem 'dotenv-rails'
 gem 'sqlite3', '~> 1.4'
 gem "aws-sdk-s3", require: false

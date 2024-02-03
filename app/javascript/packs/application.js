@@ -1,8 +1,8 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
-console.log("hello");
+import '../stylesheets/application'
 import "bootstrap"
 import "@hotwired/turbo-rails"
-import "../stylesheets/rails_admin.scss"
+import "../stylesheets/rails_admin.scss";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../stylesheets/css/styles.css';
 import '../stylesheets/css/icons.css';
@@ -16,4 +16,3 @@ import "node-waves"
 import SimpleBar from 'simplebar'; // SimpleBarをインポート
 import Pickr from '@simonwep/pickr'; // Pickrをインポート
 import ApexCharts from 'apexcharts'; // ApexChartsをインポート
-import '../stylesheets/rails_admin.scss';
