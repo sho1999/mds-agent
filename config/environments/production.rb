@@ -6,9 +6,9 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.enable_reloading = false
   config.eager_load = true	
-  config.hosts << "mds-agent.com"
-  config.hosts << "www.mds-agent.com"
-  config.hosts << "13.230.216.131" # EC2インスタンスのIPアドレス
+  Rails.application.config.hosts << "mds-agent.com"
+  Rails.application.config.hosts << "www.mds-agent.com"
+  Rails.application.config.hosts << "13.230.216.131" # EC2インスタンスのIPアドレス
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
@@ -53,7 +53,7 @@ Rails.application.configure do
   # config.assume_ssl = true
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  config.force_ssl = true
+  # config.force_ssl = true
 
   # Log to STDOUT by default
   config.logger = ActiveSupport::Logger.new("log/production.log")
