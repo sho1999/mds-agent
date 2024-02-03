@@ -1,11 +1,12 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
-import '../stylesheets/application'
+// import "../stylesheets/rails_admin.scss";
 import "bootstrap"
 import "@hotwired/turbo-rails"
 import "../stylesheets/rails_admin.scss";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../stylesheets/css/styles.css';
 import '../stylesheets/css/icons.css';
+import '../stylesheets/css/rails_admin.css';
 import Choices from 'choices.js';
 import 'node-waves/dist/waves.min.css';
 import 'simplebar/dist/simplebar.min.css';
