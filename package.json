@@ -11,6 +11,7 @@
     "flatpickr": "^4.6.13",
     "node-waves": "^0.7.6",
     "rails_admin": "3.1.2",
+    "sass": "^1.66.1",
     "simplebar": "^6.2.5"
   },
   "devDependencies": {
