@@ -6,6 +6,9 @@ class Agent < ApplicationRecord
   # DailyReportモデルとの関連付け
   has_many :daily_reports
 
+  validates :agent_id, presence: true
+
+
   def total_contracts
     DailyReport.where(agent_id: id).sum(:contracts)
   end

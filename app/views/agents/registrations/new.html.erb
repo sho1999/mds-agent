@@ -8,6 +8,11 @@
       <%= f.label :email, "Email address", class: "form-label" %>
     </div>
 
+    <div class="form-floating mb-3" style="width: 400px; margin: auto;">
+      <%= f.integer_field :agent_id, autofocus: true, placeholder: "Agent ID", class: "form-control", id: "floatingAgentID" %>
+      <%= f.label :agent_id, "Agent ID", class: "form-label" %>
+    </div>
+
     <div class="form-floating mb-3">
       <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password", class: "form-control", id: "floatingPassword" %>
       <%= f.label :password, "Password", class: "form-label" %>

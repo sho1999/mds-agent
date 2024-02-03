@@ -1,4 +1,6 @@
 class AgentsController < ApplicationController
+  before_action :authenticate_agent!
+
   def mypage
     @agent = current_agent
   

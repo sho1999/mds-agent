@@ -30,6 +30,6 @@ Rails.application.routes.draw do
 
   resources :daily_reports, only: [:new, :create]
 
-  # Defines the root path route ("/")
-  root "agents#top"
+  # デフォルトのルート（ログインしていない場合）
+  root to: "agents#mypage"
 end
