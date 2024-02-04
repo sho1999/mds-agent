@@ -17,12 +17,12 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "webpack": "^4.47.0",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^4.15.1"
+    "webpack": "^4.46.0",
+    "webpack-cli": "3.3.12",
+    "webpack-dev-server": "^3"
   },
   "scripts": {
-    "webpack": "webpack"
+    "build": "node_modules/.bin/webpack --config config/webpack/development.js"
   },
   "resolutions": {
     "rails_admin/@fortawesome/fontawesome-free": "^5.15.0"
