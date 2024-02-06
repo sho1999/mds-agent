@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-
-
 
 <div class="page">
     <style>
@@ -15,17 +12,33 @@
         }
 
     .menu-dropdown {
-        display: flex; /* d-flexと同じ */
-        justify-content: space-between; /* justify-content-betweenと同じ */
-        align-items: center; /* align-items-centerと同じ */
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center; 
         background-color: #dbdbdc;
         padding: 10px 20px;
         border-radius: 10px;
     }
 
     .custom-progress {
-        height: 25px; /* 例としての高さ */
+        height: 25px;
         margin-top: 10px;
+        background-color: #ececec;
+    }
+
+    .custom-progress-bar {
+        background-color: #007bff; 
+    }
+
+    .custom-btn-color {
+        border: 1px solid #007bff;
+        color: #007bff;
+    }
+
+    .custom-btn-color:hover {
+        border: 1px solid #007bff;
+        color: #007bff;
+        opacity: 0.8;
     }
     
     .agent-level-title {
@@ -74,7 +87,7 @@
                         </li>
                     </ul>
                 </div>
-                <%= link_to new_daily_report_path, class: "btn btn-secondary-light btn-wave" do %>
+                <%= link_to new_daily_report_path, class: "btn custom-btn-color" do %>
                     <i class="ri-file-chart-line align-middle"></i> Dailyレポートを作成
                 <% end %>
             </div>
@@ -154,7 +167,7 @@
                                             <span class="d-block fs-12 text-muted"><%= @total_dms_this_month %>/<%= @agent.monthly_dm_target %></span>
                                             </div>
                                             <div class="progress progress-animate progress-xs" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-                                            <div class="progress-bar progress-bar-striped bg-primary" style="width: <%= progress_percentage %>%;"></div>
+                                            <div class="progress-bar custom-progress-bar" style="width: <%= progress_percentage %>%;"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -168,7 +181,7 @@
                                             <span class="d-block fs-12 text-muted"><%= @total_appointments_this_month %>/<%= @agent.monthly_appointment_target %></span>
                                             </div>
                                             <div class="progress progress-animate progress-xs" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-                                            <div class="progress-bar progress-bar-striped bg-secondary" style="width: <%= appointment_progress_percentage %>%;"></div>
+                                            <div class="progress-bar custom-progress-bar" style="width: <%= appointment_progress_percentage %>%;"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -182,7 +195,7 @@
                                             <span class="d-block fs-12 text-muted"><%= @total_contracts_this_month %>/<%= @agent.monthly_contract_target %></span>
                                             </div>
                                             <div class="progress progress-animate progress-xs" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-                                            <div class="progress-bar progress-bar-striped bg-warning" style="width: <%= contract_progress_percentage %>%;"></div>
+                                            <div class="progress-bar custom-progress-bar" style="width: <%= contract_progress_percentage %>%;"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -266,8 +279,8 @@
         }
     },
     colors: [
-        "var(--primary-color)",
-        "rgb(69, 214, 91)",
+        "rgb(0,123,255)",
+        'rgb(40,167,69)',
     ],
     fill: {
         type: 'gradient',
@@ -280,12 +293,13 @@
             [
             {
                 offset: 0,
-                color: "var(--primary01)",
+                color: 'rgba(0,123,255, 0.1)',
                 opacity: 50
             },
             {
                 offset: 75,
-                color: "var(--primary01)",
+                color: "#007bff",
+                color: 'rgba(0,123,255, 0.1)',
                 opacity: 0.1
             },
             {
@@ -297,12 +311,12 @@
             [
             {
                 offset: 0,
-                color: 'rgba(69, 214, 91, 0.1)',
+                color: 'rgba(40,167,69, 0.1)',
                 opacity: 1
             },
             {
                 offset: 75,
-                color: 'rgba(69, 214, 91, 0.1)',
+                color: 'rgba(40,167,69, 0.1)',
                 opacity: 0.1
             },
             {
@@ -372,7 +386,6 @@
     };
     var chart4 = new ApexCharts(document.querySelector("#earning-reports"), options);
     chart4.render();
-    /* Earning Reports Chart */
 </script>
 
 

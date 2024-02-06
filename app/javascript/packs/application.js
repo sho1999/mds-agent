@@ -1,5 +1,4 @@
-// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
-// import "../stylesheets/rails_admin.scss";
+console.log("hello");
 import "bootstrap"
 import "@hotwired/turbo-rails"
 import "../stylesheets/rails_admin.scss";

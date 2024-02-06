@@ -3,6 +3,8 @@
 # Version of your assets, change this if you want to expire all your assets.
 Rails.application.config.assets.version = "1.0"
 Rails.application.config.assets.precompile += ['rails_admin/rails_admin.css', 'rails_admin/rails_admin.js']
+Rails.application.config.assets.precompile += %w( *.woff2 )
+
 
 
 # Add additional assets to the asset load path.

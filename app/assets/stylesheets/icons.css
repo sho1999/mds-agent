@@ -1,5 +1,5 @@
 /* src/assets/icon-fonts/RemixIcons/fonts/remixicon.css */
-@font-face {
+/* @font-face {
   font-family: "remixicon";
   src: url("./remixicon-6EX5DIDA.eot?t=1590207869815");
   src:
@@ -9,6 +9,16 @@
     url("./remixicon-4MJUCDGM.ttf?t=1590207869815") format("truetype"),
     url("./remixicon-FMXOGFBH.svg?t=1590207869815#remixicon") format("svg");
   font-display: swap;
+} */
+@font-face {
+  font-family: 'icons';
+  src: url('font/icons.eot?26481838');
+  src: url('font/icons.eot?26481838#iefix') format('embedded-opentype'),
+       url('font/icons.woff?26481838') format('woff'),
+       url('font/icons.ttf?26481838') format('truetype'),
+       url('font/icons.svg?26481838#icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 [class^=ri-],
 [class*=" ri-"] {

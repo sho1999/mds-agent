@@ -1,0 +1,32 @@
+.custom-header {
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 60px;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 40px; 
+    }
+
+.menu-dropdown {
+    display: flex; /* d-flexと同じ */
+    justify-content: space-between; /* justify-content-betweenと同じ */
+    align-items: center; /* align-items-centerと同じ */
+    background-color: #dbdbdc;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.custom-progress {
+    height: 25px; /* 例としての高さ */
+    margin-top: 10px;
+}
+
+.custom-progress-bar {
+    background-color: #007bff; /* Bootstrapのデフォルトのプライマリーカラー */
+}
+
+.agent-level-title {
+    font-size: 32px;
+    font-weight: 500;
+}
