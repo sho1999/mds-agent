@@ -1,7 +1,7 @@
 
 <div class="overlay">
     <div class="onboarding-material">
-        <div id="carouselExampleIndicators" class="carousel slide custom-carousel" data-ride="carousel" data-interval="false">
+        <div id="onboardingSlide" class="carousel slide custom-carousel" data-ride="carousel" data-interval="false">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <div class="carousel-content">
@@ -32,26 +32,16 @@
                 </div>
             </div>
             <div class="carousel-controls">
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#onboardingSlide" data-bs-slide="prev">
                     <i class="bi bi-arrow-left"></i> 
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#onboardingSlide" data-bs-slide="next">
                     <i class="bi bi-arrow-right"></i> 
-                </a>
+                </button>
             </div>
         </div>
     </div>
 </div>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  var carouselElement = document.querySelector('#carouselExampleIndicators');
-  var carousel = new bootstrap.Carousel(carouselElement, {
-    interval: false,
-    ride: false
-  });
-});
-
-</script>
     
 <style>
     .overlay {
@@ -371,6 +361,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <div id="responsive-overlay"></div>
 
 <script>
+
 /* Earning Reports Chart */
 var options = {
   series: [

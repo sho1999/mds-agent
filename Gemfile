@@ -78,4 +78,4 @@ gem 'sqlite3', '~> 1.4'
 gem "aws-sdk-s3", require: false
 gem 'unicorn'
 gem 'sassc-rails'
-gem 'babel-transpiler'
+gem 'webpacker'
