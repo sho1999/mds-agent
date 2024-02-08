@@ -35,16 +35,23 @@
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                     <i class="bi bi-arrow-left"></i> 
                 </a>
-
                 <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
                     <i class="bi bi-arrow-right"></i> 
                 </a>
             </div>
         </div>
-
     </div>
 </div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var carouselElement = document.querySelector('#carouselExampleIndicators');
+  var carousel = new bootstrap.Carousel(carouselElement, {
+    interval: false,
+    ride: false
+  });
+});
 
+</script>
     
 <style>
     .overlay {

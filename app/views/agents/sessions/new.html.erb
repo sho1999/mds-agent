@@ -1,3 +1,17 @@
+<style>
+  .custom-btn-color {
+      color: white;
+      background-color: #007bff;
+  }
+
+  .custom-btn-color:hover {
+      color: white;
+      background-color: #007bff;
+      opacity: 0.8;
+  }
+</style>
+
+
 <div class="form-section" style="width: 350px; margin: auto;">
   <h2>Log in</h2>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-floating" }) do |f| %>
@@ -19,7 +33,7 @@
     <% end %>
 
     <div class="actions">
-      <%= f.submit "Log in", class: "btn btn-primary w-100" %>
+      <%= f.submit "Log in", class: "btn custom-btn-color w-100" %>
     </div>
   <% end %>
 
