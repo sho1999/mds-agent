@@ -1,61 +1,8 @@
 
 <div class="page">
-    <style>
-    .custom-header {
-        background-color: white;
-        border-bottom: 1px solid #ddd;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        height: 60px;
-        display: flex;
-        justify-content: flex-end;
-        padding-right: 40px; 
-        }
-
-    .menu-dropdown {
-        display: flex; 
-        justify-content: space-between; 
-        align-items: center; 
-        background-color: #dbdbdc;
-        padding: 10px 20px;
-        border-radius: 10px;
-    }
-
-    <%# .custom-progress {
-        height: 25px;
-        margin-top: 10px;
-        background-color: #ececec;
-    }
-
-    .custom-progress-bar {
-        background-color: #007bff; 
-    } %>
-
-    
-
-    .custom-btn-color {
-        border: 1px solid #007bff;
-        color: #007bff;
-    }
-
-    .custom-btn-color:hover {
-        border: 1px solid #007bff;
-        color: #007bff;
-        opacity: 0.8;
-    }
-    
-    .agent-level-title {
-        font-size: 32px;
-        font-weight: 500;
-    }
-
-    </style>
-    
-        <!-- Start::app-content -->
+        
     <div class="main-content pt-4">
         <div class="container-fluid">
-
-            <!-- Start::page-header -->
-
             <div class="d-flex align-items-center justify-content-between my-4 page-header-breadcrumb flex-wrap gap-2 pt-4">
                 <div class="dropdown">
                     <div class="menu-dropdown d-flex justify-content-between align-items-center dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
@@ -64,29 +11,24 @@
                             <p class="fs-13 text-muted mb-0">ID : <%= @agent.agent_id %></p>
                         </div>
                     </div>
-
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <%= link_to edit_agent_registration_path, class: "dropdown-item d-flex align-items-center" do %>
-                            <i class="bi bi-person fs-18 me-2 op-7"></i>Profile
+                        <%= link_to edit_agent_registration_path, class: "dropdown-item" do %>
+                            <i class="bi bi-person fs-22 me-2"></i>Profile
                         <% end %>
-                        <%= link_to "javascript:void(0);", class: "dropdown-item d-flex align-items-center" do %>
-                            <i class="bi bi-check-square fs-16 me-2 op-7"></i>Task Manager
+                        <%= link_to "javascript:void(0);", class: "dropdown-item" do %>
+                            <i class="bi bi-check-square fs-22 me-2"></i>Task Manager
                         <% end %>
                         <!--
-                        <%= link_to task_agent_path(@agent), class: "dropdown-item d-flex align-items-center" do %>
-                            <i class="bi bi-check-square fs-16 me-2 op-7"></i>Task Manager
+                        <%= link_to task_agent_path(@agent), class: "dropdown-item" do %>
+                            <i class="bi bi-check-square fs-16 me-2"></i>Task Manager
                         <% end %>
-                        -->
-                        <li>
-                        <%= link_to "https://lin.ee/RdJmOTD", class: "dropdown-item d-flex align-items-center" do %>
-                            <i class="bi bi-headset fs-18 me-2 op-7"></i>Support
+                         Start::app-content -->
+                        <%= link_to "https://lin.ee/RdJmOTD", class: "dropdown-item" do %>
+                            <i class="bi bi-headset fs-22 me-2"></i>Support
                         <% end %>
-                        </li>
-                        <li>
-                        <%= button_to destroy_agent_session_path, method: :delete, class: "dropdown-item d-flex align-items-center" do %>
-                            <i class="bi bi-box-arrow-right fs-18 me-2 op-7"></i>Log Out
+                        <%= button_to destroy_agent_session_path, method: :delete, class: "dropdown-item" do %>
+                            <i class="bi bi-box-arrow-right fs-22 me-2"></i>Log Out
                         <% end %>
-                        </li>
                     </ul>
                 </div>
                 <%= link_to new_daily_report_path, class: "btn custom-btn-color" do %>
@@ -94,7 +36,6 @@
                 <% end %>
             </div>
 
-            <!-- End::page-header -->
 
             <!-- Start::row-1 -->
             <div class="row">
@@ -207,8 +148,10 @@
                                 <div class="card-body pb-0 pl-0 pr-0">
                                     <div class="row border-top border-block-start-dashed">
                                         <div class="col border-end border-inline-end-dashed">
-                                            <div class="text-center p-3">
-                                                <span class="fs-14 visit-gender male">DM > アポ</span>
+                                            <div class="d-flex flex-column align-items-center p-3">
+                                                <div class="d-flex align-items-center">
+                                                    <span class="fs-14 visit-gender male">DM > アポ</span>
+                                                </div>
                                                 <div class="mt-1">
                                                     <% dm_appointment_rate = @total_dms_this_month > 0 ? (@total_appointments_this_month.to_f / @total_dms_this_month.to_f * 100).round : 0 %>
                                                     <span class="fs-18"><%= dm_appointment_rate %>%</span>
@@ -216,8 +159,10 @@
                                             </div>
                                         </div>
                                         <div class="col border-inline-end-dashed">
-                                            <div class="text-center p-3">
-                                                <span class="fs-14 visit-gender female">アポ > 契約</span>
+                                            <div class="d-flex flex-column align-items-center p-3">
+                                                <div class="d-flex align-items-center">
+                                                    <span class="fs-14 visit-gender female">アポ > 契約</span>
+                                                </div>
                                                 <div class="mt-1">
                                                     <% appointment_contract_rate = @total_appointments_this_month > 0 ? (@total_contracts_this_month.to_f / @total_appointments_this_month.to_f * 100).round : 0 %>
                                                     <span class="fs-18"><%= appointment_contract_rate %>%</span>
@@ -252,14 +197,56 @@
     </div>
 </div>
 
-    
-<!-- Scroll To Top -->
-<div class="scrollToTop">
-    <span class="arrow"><i class="ti ti-arrow-narrow-up fs-20"></i></span>
-</div>
-<div id="responsive-overlay"></div>
+  <style>
+    .custom-header {
+        background-color: white;
+        border-bottom: 1px solid #ddd;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        height: 60px;
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 40px; 
+        }
 
- <script>                
+    .menu-dropdown {
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center; 
+        background-color: #dbdbdc;
+        padding: 10px 20px;
+        border-radius: 10px;
+    }
+
+    .custom-progress {
+        height: 25px;
+        margin-top: 10px;
+        background-color: #ececec;
+    }
+
+    .custom-progress-bar {
+        background-color: #007bff; 
+    }
+
+    .custom-btn-color {
+        border: 1px solid #007bff;
+        color: #007bff;
+    }
+
+    .custom-btn-color:hover {
+        border: 1px solid #007bff;
+        color: #007bff;
+        opacity: 0.8;
+    }
+    
+    .agent-level-title {
+        font-size: 32px;
+        font-weight: 500;
+    }
+
+    </style>
+    
+
+ <script>         
     /* Earning Reports Chart */
     var options = {
     
