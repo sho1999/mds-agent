@@ -19,12 +19,13 @@ Rails.application.routes.draw do
     registrations: 'admins/registrations'
   }
 
-  resources :agents, only: [:index, :show, :update] do
+  resources :agents, only: [:index, :update] do
     member do
       get 'task'
       get 'top'
       get 'onboarding'
       get 'set_target'
+      get 'mypage'
     end
   end
 
@@ -32,5 +33,4 @@ Rails.application.routes.draw do
 
   # デフォルトのルート（ログインしていない場合）
   root to: "agents#mypage"
-  get '/mypage', to: 'users#show'
 end

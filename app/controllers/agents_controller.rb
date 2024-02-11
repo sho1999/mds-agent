@@ -1,7 +1,7 @@
 class AgentsController < ApplicationController
   before_action :authenticate_agent!
 
-  def show
+  def mypage
     @agent = current_agent
   
     # 現在の年と月を取得し、その月の初日と最終日を取得
