@@ -59,7 +59,7 @@ class AgentsController < ApplicationController
   def update
     @agent = Agent.find(params[:id])
     if @agent.update(agent_params)
-      redirect_to @agent, notice: 'Agent was successfully updated.'
+      redirect_to mypage_agent_path(@agent), notice: 'Agent was successfully updated.'
     else
       render :edit
     end
