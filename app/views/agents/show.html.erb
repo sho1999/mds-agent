@@ -88,16 +88,15 @@
                     <div class="card custom-card overflow-hidden" style="height: 400px;">
                         <div class="card-header justify-content-between">
                             <div class="card-title">今月の目標達成度</div>
+                             <!--
                             <div class="dropdown">
                                 <a aria-label="anchor" href="javascript:void(0);" data-bs-toggle="dropdown">
                                     <i class="ri-more-fill fs-18 text-muted"></i>
                                 </a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a class="dropdown-item" href="javascript:void(0);">Action</a></li>
-                                    <li><a class="dropdown-item" href="javascript:void(0);">Another Action</a></li>
-                                    <li><a class="dropdown-item" href="javascript:void(0);">Something Else</a></li>
                                 </ul>
                             </div>
+                             -->
                         </div>
                         <div class="card-body pb-0">
                             <ul class="list-unstyled visitors-country">
@@ -105,9 +104,9 @@
                                     <div class="d-flex align-items-center"> 
                                         <div class="flex-fill">
                                             <div class="d-flex align-items-center justify-content-between mb-2">
-                                            <% progress_percentage = @agent.monthly_dm_target > 0 ? (@total_dms_this_month.to_f / @agent.monthly_dm_target * 100).round : 0 %>
+                                            <% progress_percentage = @monthly_dm_target > 0 ? (@total_dms_this_month.to_f / @monthly_dm_target * 100).round : 0 %>
                                             <span class="d-block fs-14">DM数 (<%=progress_percentage%>%)</span>
-                                            <span class="d-block fs-12 text-muted"><%= @total_dms_this_month %>/<%= @agent.monthly_dm_target %></span>
+                                            <span class="d-block fs-12 text-muted"><%= @total_dms_this_month %>/<%= @monthly_dm_target.ceil %></span>
                                             </div>
                                             <div class="progress progress-animate progress-xs" role="progressbar" aria-valuemin="0" aria-valuemax="100">
                                             <div class="progress-bar custom-progress-bar" style="width: <%= progress_percentage %>%;"></div>
@@ -119,9 +118,9 @@
                                     <div class="d-flex align-items-center"> 
                                         <div class="flex-fill">
                                             <div class="d-flex align-items-center justify-content-between mb-2">
-                                            <% appointment_progress_percentage = @agent.monthly_appointment_target > 0 ? (@total_appointments_this_month.to_f / @agent.monthly_appointment_target * 100).round : 0 %>
+                                            <% appointment_progress_percentage = @monthly_appointment_target > 0 ? (@total_appointments_this_month.to_f / @monthly_appointment_target * 100).round : 0 %>
                                             <span class="d-block fs-14">アポ数 (<%=appointment_progress_percentage%>%)</span>
-                                            <span class="d-block fs-12 text-muted"><%= @total_appointments_this_month %>/<%= @agent.monthly_appointment_target %></span>
+                                            <span class="d-block fs-12 text-muted"><%= @total_appointments_this_month %>/<%= @monthly_appointment_target.ceil %></span>
                                             </div>
                                             <div class="progress progress-animate progress-xs" role="progressbar" aria-valuemin="0" aria-valuemax="100">
                                             <div class="progress-bar custom-progress-bar" style="width: <%= appointment_progress_percentage %>%;"></div>
@@ -133,9 +132,9 @@
                                     <div class="d-flex align-items-center"> 
                                         <div class="flex-fill">
                                             <div class="d-flex align-items-center justify-content-between mb-2">
-                                            <% contract_progress_percentage = @agent.monthly_contract_target > 0 ? (@total_contracts_this_month.to_f / @agent.monthly_contract_target * 100).round : 0 %>
+                                            <% contract_progress_percentage = @monthly_contract_target > 0 ? (@total_contracts_this_month.to_f / @monthly_contract_target * 100).round : 0 %>
                                             <span class="d-block fs-14">契約数 (<%=contract_progress_percentage%>%)</span>
-                                            <span class="d-block fs-12 text-muted"><%= @total_contracts_this_month %>/<%= @agent.monthly_contract_target %></span>
+                                            <span class="d-block fs-12 text-muted"><%= @total_contracts_this_month %>/<%= @monthly_contract_target.ceil %></span>
                                             </div>
                                             <div class="progress progress-animate progress-xs" role="progressbar" aria-valuemin="0" aria-valuemax="100">
                                             <div class="progress-bar custom-progress-bar" style="width: <%= contract_progress_percentage %>%;"></div>
@@ -175,7 +174,7 @@
                         </div>
                         <div class="card-footer">
                             <div class="text-center">
-                                <a href="javascript:void(0);" class="text-secondary">Full Details <i class="ri-share-box-line align-middle"></i></a>
+                                <%= link_to "Set Target", set_target_agent_path(@agent), class: "text-primary" %> <i class="ri-share-box-line align-middle text-primary"></i>
                             </div>
                         </div>
                     </div>

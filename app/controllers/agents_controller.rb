@@ -1,7 +1,7 @@
 class AgentsController < ApplicationController
   before_action :authenticate_agent!
 
-  def mypage
+  def show
     @agent = current_agent
   
     # 現在の年と月を取得し、その月の初日と最終日を取得
@@ -34,6 +34,10 @@ class AgentsController < ApplicationController
     @total_appointments = @agent.total_appointments
     @total_dms = @agent.total_dms
 
+    @monthly_contract_target = @agent.monthly_amount_revenue / 6000
+    @monthly_appointment_target = @monthly_contract_target * 2.5
+    @monthly_dm_target = @monthly_appointment_target * 50
+
     @current_level, @level_progress = @agent.calculate_progress
   end
 
@@ -48,5 +52,23 @@ class AgentsController < ApplicationController
     @agent = current_agent
   end
 
+  def set_target
+    @agent = current_agent
+  end
+
+  def update
+    @agent = Agent.find(params[:id])
+    if @agent.update(agent_params)
+      redirect_to @agent, notice: 'Agent was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
+  private
+
+  def agent_params
+    params.require(:agent).permit(:monthly_amount_revenue)
+  end
 end
   

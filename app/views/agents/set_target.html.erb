@@ -1,0 +1,89 @@
+<div class="set-section">
+    <div class="form-section" style="max-width: 600px; margin: auto;">
+        <div class="container-fluid">
+            <%= form_with(model: @agent, local: true, html: { class: 'form-section' }) do |form| %>
+                <div class="card custom-card">
+                    <div class="card-header justify-content-between">
+                        <div class="card-title">2024年目標金額</div>
+                    </div>
+                    <div class="card-body">
+                        <!-- 既存のフィールド -->
+                        
+                        <!-- 月間収益目標のフィールドを追加 -->
+                        <div class="input-group mb-3">
+                            <div class="input-group-text"><i class="ri-money-dollar-circle-line"></i></div>
+                            <%= form.number_field :monthly_amount_revenue, id: 'form-monthly-amount-revenue', class: 'form-control', placeholder: '月間収益目標' %>
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-between pt-1 pb-1">
+                            <p class="text-muted mb-0">必要な契約数</p>
+                            <h4 id="contracts-needed" class="mb-0 text-primary">0</h4>
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-between pt-1 pb-1">
+                            <p class="text-muted mb-0">必要なアポ数</p>
+                            <h4 id="appointments-needed" class="mb-0 text-primary">0</h4>
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-between pt-1 pb-1">
+                            <p class="text-muted mb-0">必要なDM数</p>
+                            <h4 id="dms-needed" class="mb-0 text-primary">0</h4>
+                        </div>
+
+
+                        <!-- 送信ボタン -->
+                        <div class="actions mt-3">
+                            <%= form.submit "設定する", class: 'btn custom-btn-color btn-lg w-100' %>
+                            <%= link_to "戻る", :back, class: "btn" %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // IDに基づいて月間収益目標フィールドを取得
+    var revenueField = document.getElementById('form-monthly-amount-revenue');
+
+    // 値が変更されたときに関数をトリガー
+    revenueField.addEventListener('input', function() {
+        calculateTargets();
+    });
+
+    function calculateTargets() {
+        // 月間収益目標の値を取得
+        var revenue = revenueField.value;
+
+        // 必要な契約数、アポ数、DM数を計算
+        var contractsNeeded = revenue / 6000; // 1件あたりの収益
+        var appointmentsNeeded = contractsNeeded * 2.5; // 契約に必要なアポ数
+        var dmsNeeded = appointmentsNeeded * 50; // アポに必要なDM数
+
+        // 結果を表示
+        document.getElementById('contracts-needed').innerText = contractsNeeded.toFixed(0);
+        document.getElementById('appointments-needed').innerText = appointmentsNeeded.toFixed(0);
+        document.getElementById('dms-needed').innerText = dmsNeeded.toFixed(0);
+    }
+});
+</script>
+
+
+<style>
+.set-section {
+    margin: auto;
+}
+
+.custom-btn-color {
+    background-color: #007bff;
+    color: white;
+}
+
+.custom-btn-color:hover {
+    background-color: #007bff;
+    color: white;
+    opacity: 0.7;
+}
+</style>
