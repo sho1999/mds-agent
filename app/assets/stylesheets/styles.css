@@ -3724,13 +3724,13 @@
   box-shadow: none;
 }
 .btn-primary {
-  background-color: var(--primary-rgb) !important;
-  border-color: var(--primary-rgb) !important;
+  background-color: #007bff;
+  border-color: #007bff;
   color: #fff !important;
 }
 .btn-primary:hover {
-  background-color: rgba(var(--primary-rgb), 0.9) !important;
-  border-color: var(--primary-rgb) !important;
+  background-color: rgba(0, 123, 255, 0.9) !important;
+  border-color: #007bff;
   color: #fff;
 }
 .btn-primary:focus {
@@ -3757,7 +3757,7 @@
 .btn-primary.active,
 .btn-primary.show,
 .btn-primary:active {
-  background-color: var(--primary-color) !important;
+  background-color: #007bff !important;
   border-color: var(--primary-border) !important;
 }
 .btn-secondary {
@@ -13000,7 +13000,7 @@ h1.nft-title {
 }
 .fc-h-event.bg-primary-transparent .fc-event-title,
 .fc-h-event.bg-primary-transparent .fc-event-time {
-  color: var(--primary-color);
+  color: #007bff;
 }
 .fc-h-event.bg-secondary-transparent .fc-event-title,
 .fc-h-event.bg-secondary-transparent .fc-event-time {
@@ -19401,12 +19401,12 @@ code[class*=language-] {
   background-color: var(--gray-9);
 }
 .bg-primary-transparent {
-  background-color: var(--primary01) !important;
-  color: var(--primary-color) !important;
+  background-color: #007bff;
+  color: white;
 }
 .bg-primary-transparent:hover {
-  background-color: var(--primary01) !important;
-  color: var(--primary-color) !important;
+  background-color: #007bff;
+  color: white;
 }
 .bg-secondary-transparent {
   background-color: rgba(var(--secondary-rgb), 0.1) !important;

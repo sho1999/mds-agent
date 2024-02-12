@@ -20,6 +20,37 @@ class Agent < ApplicationRecord
     DailyReport.where(agent_id: id).sum(:appointments)
   end
 
+  def monthly_contract_target(agent)
+    agent.monthly_amount_revenue / 6000
+  end
+
+  def monthly_appointment_target(agent)
+    agent.monthly_contract_target(agent) * 2.5
+  end
+
+  def monthly_dm_target(agent)
+    agent.monthly_appointment_target(agent) * 50
+  end
+
+   # データベースからのデータを取得（インスタンス変数に変更）
+  def total_dms_this_month(agent)
+    year = Date.today.year
+    month = Date.today.month
+    start_date = Date.new(year, month, 1)
+    end_date = start_date.end_of_month
+    DailyReport.where(agent_id: agent.id, date: start_date..end_date).sum(:dms)
+  end
+
+  def total_appointments_this_month(agent)
+    year = Date.today.year
+    month = Date.today.month
+    start_date = Date.new(year, month, 1)
+    end_date = start_date.end_of_month
+    DailyReport.where(agent_id: agent.id, date: start_date..end_date).sum(:appointments)
+  end
+
+
+
   def calculate_progress
     # ポイントの計算
     total_points = (self.total_dms / 10) + (self.total_appointments * 5) + (self.total_contracts * 30)
@@ -40,5 +71,4 @@ class Agent < ApplicationRecord
 
     return current_level, level_progress
   end
-  
 end

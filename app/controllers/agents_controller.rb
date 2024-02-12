@@ -3,7 +3,13 @@ class AgentsController < ApplicationController
 
   def mypage
     @agent = current_agent
-  
+    @agents = Agent.joins(:daily_reports)
+    .where(daily_reports: { date: Time.current.beginning_of_month..Time.current.end_of_month })
+    .select('agents.*, COUNT(daily_reports.id) AS total_appointments_this_month')
+    .group('agents.id')
+    .order('total_appointments_this_month DESC')
+    .limit(5)
+
     # 現在の年と月を取得し、その月の初日と最終日を取得
     year = Date.today.year
     month = Date.today.month
@@ -25,18 +31,12 @@ class AgentsController < ApplicationController
     @appointments_data = all_dates.map { |date| data_by_date[date]&.dig(:appointments) || 0 }
   
     #初期化
-    @total_dms_this_month = @daily_reports.sum(:dms)
-    @total_appointments_this_month = @daily_reports.sum(:appointments)
     @total_contracts_this_month = @daily_reports.sum(:contracts)
     
     #月間契約数と全期間契約数の合計
     @total_contracts = @agent.total_contracts
     @total_appointments = @agent.total_appointments
     @total_dms = @agent.total_dms
-
-    @monthly_contract_target = @agent.monthly_amount_revenue / 6000
-    @monthly_appointment_target = @monthly_contract_target * 2.5
-    @monthly_dm_target = @monthly_appointment_target * 50
 
     @current_level, @level_progress = @agent.calculate_progress
   end
