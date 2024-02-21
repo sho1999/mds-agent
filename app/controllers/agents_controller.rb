@@ -5,10 +5,9 @@ class AgentsController < ApplicationController
     @agent = current_agent
     @agents = Agent.joins(:daily_reports)
     .where(daily_reports: { date: Time.current.beginning_of_month..Time.current.end_of_month })
-    .select('agents.*, COUNT(daily_reports.id) AS total_appointments_this_month')
     .group('agents.id')
-    .order('total_appointments_this_month DESC')
-    .limit(5)
+    .select('agents.*, SUM(daily_reports.appointments) AS total_appointments_count, SUM(daily_reports.dms) AS total_dms_count')
+    .order('total_appointments_count DESC, total_dms_count DESC')
 
     # 現在の年と月を取得し、その月の初日と最終日を取得
     year = Date.today.year
