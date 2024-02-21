@@ -8,6 +8,7 @@ class AgentsController < ApplicationController
     .group('agents.id')
     .select('agents.*, SUM(daily_reports.appointments) AS total_appointments_count, SUM(daily_reports.dms) AS total_dms_count')
     .order('total_appointments_count DESC, total_dms_count DESC')
+    .limit(2)
 
     # 現在の年と月を取得し、その月の初日と最終日を取得
     year = Date.today.year
