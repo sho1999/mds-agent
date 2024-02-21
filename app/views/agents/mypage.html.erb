@@ -1,304 +1,264 @@
 
 <div class="page">
-        
-    <div class="main-content pt-4">
-        <div class="container-fluid">
-            <div class="d-flex align-items-center justify-content-between my-4 page-header-breadcrumb flex-wrap gap-2 pt-4">
-                <div class="dropdown">
-                    <div class="menu-dropdown d-flex justify-content-between align-items-center dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                        <div>
-                            <p class="fw-medium fs-20 mb-0"><span><%= @agent.name %>さん</span></p>
-                            <p class="fs-13 text-muted mb-0">ID : <%= @agent.agent_id %></p>
+    <% unless current_agent.email = "muramatsu@mds-fund.com" %>
+        <div class="main-content pt-4">
+            <div class="container-fluid">
+                <div class="d-flex align-items-center justify-content-between my-4 page-header-breadcrumb flex-wrap gap-2 pt-4">
+                    <div class="dropdown">
+                        <div class="menu-dropdown d-flex justify-content-between align-items-center dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div>
+                                <p class="fw-medium fs-20 mb-0"><span><%= @agent.name %>さん</span></p>
+                                <p class="fs-13 text-muted mb-0">ID : <%= @agent.agent_id %></p>
+                            </div>
                         </div>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <%= link_to edit_agent_registration_path, class: "dropdown-item" do %>
+                                <i class="bi bi-person fs-22 me-2"></i>Profile
+                            <% end %>
+                            <%= link_to task_agent_path(@agent), class: "dropdown-item" do %>
+                                <i class="bi bi-check-square fs-16 me-2"></i>Task Manager
+                            <% end %>
+                            <%= link_to "https://lin.ee/RdJmOTD", class: "dropdown-item" do %>
+                                <i class="bi bi-headset fs-22 me-2"></i>Support
+                            <% end %>
+                            <%= button_to destroy_agent_session_path, method: :delete, class: "dropdown-item" do %>
+                                <i class="bi bi-box-arrow-right fs-22 me-2"></i>Log Out
+                            <% end %>
+                        </ul>
                     </div>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <%= link_to edit_agent_registration_path, class: "dropdown-item" do %>
-                            <i class="bi bi-person fs-22 me-2"></i>Profile
-                        <% end %>
-                        <%= link_to task_agent_path(@agent), class: "dropdown-item" do %>
-                            <i class="bi bi-check-square fs-16 me-2"></i>Task Manager
-                        <% end %>
-                        <%= link_to "https://lin.ee/RdJmOTD", class: "dropdown-item" do %>
-                            <i class="bi bi-headset fs-22 me-2"></i>Support
-                        <% end %>
-                        <%= button_to destroy_agent_session_path, method: :delete, class: "dropdown-item" do %>
-                            <i class="bi bi-box-arrow-right fs-22 me-2"></i>Log Out
-                        <% end %>
-                    </ul>
+                    <%= link_to new_daily_report_path, class: "btn custom-btn-color" do %>
+                        <i class="ri-file-chart-line align-middle"></i> Dailyレポートを作成
+                    <% end %>
                 </div>
-                <%= link_to new_daily_report_path, class: "btn custom-btn-color" do %>
-                    <i class="ri-file-chart-line align-middle"></i> Dailyレポートを作成
-                <% end %>
-            </div>
 
 
-            <!-- Start::row-1 -->
-            <div class="row">
-                <div class="col-md-12 col-xl-12">
-                    <div class="row">
-                        <div class="col-md-6 col-lg-3 col-xl-3">
-                            <div class="card custom-card overflow-hidden">
-                                <div class="card-body pr-0 pl-0">
-                                    <div class="mb-2 p-3 pb-0">
-                                        <div class="flex-fill fs-15">合計契約数</div>
-                                    </div>
-                                    <div class="d-flex align-items-center ps-3">
-                                        <div class="flex-fill">
-                                            <div class="fs-25 fw-normal mb-2"><%= @total_contracts %></div>
-                                            <p class="mb-0">
-                                                <i class="ri-arrow-up-line text-primary fs-15 align-middle"></i>
-                                                <span  class="text-primary fs-12"> 26.35% last month</span>
-                                            </p>
+                <!-- Start::row-1 -->
+                <div class="row">
+                    <div class="col-md-12 col-xl-12">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-3 col-xl-3">
+                                <div class="card custom-card overflow-hidden">
+                                    <div class="card-body pr-0 pl-0">
+                                        <div class="mb-2 p-3 pb-0">
+                                            <div class="flex-fill fs-15">合計契約数</div>
                                         </div>
-                                        <div id="sales-card" class="crm-card-chart"></div>
+                                        <div class="d-flex align-items-center ps-3">
+                                            <div class="flex-fill">
+                                                <div class="fs-25 fw-normal mb-2"><%= @total_contracts %></div>
+                                                <p class="mb-0">
+                                                    <i class="ri-arrow-up-line text-primary fs-15 align-middle"></i>
+                                                    <span  class="text-primary fs-12"> 26.35% last month</span>
+                                                </p>
+                                            </div>
+                                            <div id="sales-card" class="crm-card-chart"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3 col-xl-9">
-                            <div class="card custom-card overflow-hidden">
-                                <div class="card-body">
-                                    <div class="mb-2">
-                                        <div class="flex-fill fs-15">代理店レベル</div>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-end">
-                                        <span class="agent-level-title">Lv. <%= @current_level %></span>
-                                        <span>Lv. <%= @current_level + 1 %></span>
-                                    </div>
-                                    <div class="progress custom-progress">
-                                        <div class="progress-bar custom-progress-bar" role="progressbar" style="width: <%= @level_progress %>%;" aria-valuenow="<%= @level_progress %>" aria-valuemin="0" aria-valuemax="100"><%= @level_progress %>%</div>
+                            <div class="col-md-6 col-lg-3 col-xl-9">
+                                <div class="card custom-card overflow-hidden">
+                                    <div class="card-body">
+                                        <div class="mb-2">
+                                            <div class="flex-fill fs-15">代理店レベル</div>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-end">
+                                            <span class="agent-level-title">Lv. <%= @current_level %></span>
+                                            <span>Lv. <%= @current_level + 1 %></span>
+                                        </div>
+                                        <div class="progress custom-progress">
+                                            <div class="progress-bar custom-progress-bar" role="progressbar" style="width: <%= @level_progress %>%;" aria-valuenow="<%= @level_progress %>" aria-valuemin="0" aria-valuemax="100"><%= @level_progress %>%</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- End::row-1 -->
+                <!-- End::row-1 -->
 
-            
-            <!-- Start::row-2 -->
-            <div class="row d-flex align-items-stretch">
-                <div class="col-lg-12 col-xxl-3">
-                    <div class="card custom-card overflow-hidden" style="height: 400px;">
-                        <div class="card-header justify-content-between">
-                            <div class="card-title">今月の目標達成度</div>
-                             <!--
-                            <div class="dropdown">
-                                <a aria-label="anchor" href="javascript:void(0);" data-bs-toggle="dropdown">
-                                    <i class="ri-more-fill fs-18 text-muted"></i>
-                                </a>
-                                <ul class="dropdown-menu" role="menu">
+                
+                <!-- Start::row-2 -->
+                <div class="row d-flex align-items-stretch">
+                    <div class="col-lg-12 col-xxl-3">
+                        <div class="card custom-card overflow-hidden" style="height: 400px;">
+                            <div class="card-header justify-content-between">
+                                <div class="card-title">今月の目標達成度</div>
+                                <!--
+                                <div class="dropdown">
+                                    <a aria-label="anchor" href="javascript:void(0);" data-bs-toggle="dropdown">
+                                        <i class="ri-more-fill fs-18 text-muted"></i>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                    </ul>
+                                </div>
+                                -->
+                            </div>
+                            <div class="card-body pb-0">
+                                <ul class="list-unstyled visitors-country">
+                                    <li>
+                                        <div class="d-flex align-items-center"> 
+                                            <div class="flex-fill">
+                                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                                <% progress_percentage = @agent.monthly_dm_target(@agent) > 0 ? (current_agent.total_dms_this_month(current_agent).to_f / @agent.monthly_dm_target(@agent) * 100).round : 0 %>
+                                                <span class="d-block fs-14">DM数 (<%=progress_percentage%>%)</span>
+                                                <span class="d-block fs-12 text-muted"><%= current_agent.total_dms_this_month(current_agent) %>/<%= @agent.monthly_dm_target(@agent).ceil %></span>
+                                                </div>
+                                                <div class="progress progress-animate progress-xs" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                                <div class="progress-bar custom-progress-bar" style="width: <%= progress_percentage %>%;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="d-flex align-items-center"> 
+                                            <div class="flex-fill">
+                                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                                <% appointment_progress_percentage = @agent.monthly_appointment_target(@agent) > 0 ? (current_agent.total_appointments_this_month(current_agent).to_f / @agent.monthly_appointment_target(@agent) * 100).round : 0 %>
+                                                <span class="d-block fs-14">アポ数 (<%=appointment_progress_percentage%>%)</span>
+                                                <span class="d-block fs-12 text-muted"><%= current_agent.total_appointments_this_month(current_agent) %>/<%= @agent.monthly_appointment_target(@agent).ceil %></span>
+                                                </div>
+                                                <div class="progress progress-animate progress-xs" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                                <div class="progress-bar custom-progress-bar" style="width: <%= appointment_progress_percentage %>%;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="d-flex align-items-center"> 
+                                            <div class="flex-fill">
+                                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                                <% contract_progress_percentage = @agent.monthly_contract_target(@agent) > 0 ? (@total_contracts_this_month.to_f / @agent.monthly_contract_target(@agent) * 100).round : 0 %>
+                                                <span class="d-block fs-14">契約数 (<%=contract_progress_percentage%>%)</span>
+                                                <span class="d-block fs-12 text-muted"><%= @total_contracts_this_month %>/<%= @agent.monthly_contract_target(@agent).ceil %></span>
+                                                </div>
+                                                <div class="progress progress-animate progress-xs" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                                <div class="progress-bar custom-progress-bar" style="width: <%= contract_progress_percentage %>%;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
                                 </ul>
-                            </div>
-                             -->
-                        </div>
-                        <div class="card-body pb-0">
-                            <ul class="list-unstyled visitors-country">
-                                <li>
-                                    <div class="d-flex align-items-center"> 
-                                        <div class="flex-fill">
-                                            <div class="d-flex align-items-center justify-content-between mb-2">
-                                            <% progress_percentage = @agent.monthly_dm_target(@agent) > 0 ? (current_agent.total_dms_this_month(current_agent).to_f / @agent.monthly_dm_target(@agent) * 100).round : 0 %>
-                                            <span class="d-block fs-14">DM数 (<%=progress_percentage%>%)</span>
-                                            <span class="d-block fs-12 text-muted"><%= current_agent.total_dms_this_month(current_agent) %>/<%= @agent.monthly_dm_target(@agent).ceil %></span>
-                                            </div>
-                                            <div class="progress progress-animate progress-xs" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-                                            <div class="progress-bar custom-progress-bar" style="width: <%= progress_percentage %>%;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="d-flex align-items-center"> 
-                                        <div class="flex-fill">
-                                            <div class="d-flex align-items-center justify-content-between mb-2">
-                                            <% appointment_progress_percentage = @agent.monthly_appointment_target(@agent) > 0 ? (current_agent.total_appointments_this_month(current_agent).to_f / @agent.monthly_appointment_target(@agent) * 100).round : 0 %>
-                                            <span class="d-block fs-14">アポ数 (<%=appointment_progress_percentage%>%)</span>
-                                            <span class="d-block fs-12 text-muted"><%= current_agent.total_appointments_this_month(current_agent) %>/<%= @agent.monthly_appointment_target(@agent).ceil %></span>
-                                            </div>
-                                            <div class="progress progress-animate progress-xs" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-                                            <div class="progress-bar custom-progress-bar" style="width: <%= appointment_progress_percentage %>%;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="d-flex align-items-center"> 
-                                        <div class="flex-fill">
-                                            <div class="d-flex align-items-center justify-content-between mb-2">
-                                            <% contract_progress_percentage = @agent.monthly_contract_target(@agent) > 0 ? (@total_contracts_this_month.to_f / @agent.monthly_contract_target(@agent) * 100).round : 0 %>
-                                            <span class="d-block fs-14">契約数 (<%=contract_progress_percentage%>%)</span>
-                                            <span class="d-block fs-12 text-muted"><%= @total_contracts_this_month %>/<%= @agent.monthly_contract_target(@agent).ceil %></span>
-                                            </div>
-                                            <div class="progress progress-animate progress-xs" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-                                            <div class="progress-bar custom-progress-bar" style="width: <%= contract_progress_percentage %>%;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                            <div class="d-flex align-items-center">
-                                <div class="card-body pb-0 pl-0 pr-0">
-                                    <div class="row border-top border-block-start-dashed">
-                                        <div class="col border-end border-inline-end-dashed">
-                                            <div class="d-flex flex-column align-items-center p-3">
-                                                <div class="d-flex align-items-center">
-                                                    <span class="fs-14 visit-gender male">DM > アポ</span>
-                                                </div>
-                                                <div class="mt-1">
-                                                    <% dm_appointment_rate = current_agent.total_dms_this_month(current_agent) > 0 ? (current_agent.total_appointments_this_month(current_agent).to_f / current_agent.total_dms_this_month(current_agent).to_f * 100).round : 0 %>
-                                                    <span class="fs-18"><%= dm_appointment_rate %>%</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col border-inline-end-dashed">
-                                            <div class="d-flex flex-column align-items-center p-3">
-                                                <div class="d-flex align-items-center">
-                                                    <span class="fs-14 visit-gender female">アポ > 契約</span>
-                                                </div>
-                                                <div class="mt-1">
-                                                    <% appointment_contract_rate = current_agent.total_appointments_this_month(current_agent) > 0 ? (@total_contracts_this_month.to_f / current_agent.total_appointments_this_month(current_agent).to_f * 100).round : 0 %>
-                                                    <span class="fs-18"><%= appointment_contract_rate %>%</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <div class="text-center">
-                                <%= link_to "目標を設定する", set_target_agent_path(@agent), class: "text-primary" %> <i class="ri-share-box-line align-middle text-primary"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-xxl-9">
-                    <div class="card custom-card overflow-hidden" style="height: 400px;">
-                        <div class="card-header justify-content-between">
-                            <div class="card-title">
-                                月間レポート
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div id="earning-reports"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Start:: row-3 -->
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="card custom-card">
-                        <div class="card-header justify-content-between">
-                            <div class="card-title">
-                                代理店ランキングTOP3
-                            </div>
-                            <div class="btn-list">
-                                <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="ri-add-line me-1 align-middle"></i>フィルター
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="filterDropdown">
-                                    <li><a class="dropdown-item" href="#">最小DM数</a></li>
-                                    <li><a class="dropdown-item" href="#">最小アポ数</a></li>
-                                    <li><a class="dropdown-item" href="#">代理店レベル</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="card-body p-0">
-                            <div class="table-responsive">
-                                <table class="table text-nowrap table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">代理店名</th>
-                                            <th scope="col">今月のアポ数</th>
-                                            <th scope="col">今月のDM数</th>
-                                            <th scope="col">代理店レベル</th>
-                                            <th scope="col">ステータス</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <% @agents.each do |agent| %>
-                                            <tr>
-                                                <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="card-body pb-0 pl-0 pr-0">
+                                        <div class="row border-top border-block-start-dashed">
+                                            <div class="col border-end border-inline-end-dashed">
+                                                <div class="d-flex flex-column align-items-center p-3">
                                                     <div class="d-flex align-items-center">
-                                                        <span class="avatar avatar-sm me-2 avatar-rounded">
-                                                            <i class="material-icons text-secondary">account_circle</i>
-                                                        </span><%=agent.name%>
+                                                        <span class="fs-14 visit-gender male">DM > アポ</span>
                                                     </div>
-                                                </td>
-                                                <td><%=agent.total_appointments_this_month(agent)%></td>
-                                                <td><%=agent.total_dms_this_month(agent)%></td>
-                                                <td><%=agent.calculate_progress.first%></td>
-                                                <td>
-                                                    <span class="badge bg-primary-transparent">New</span>
-                                                </td>
-                                            </tr>
-                                        <% end %>
-                                    </tbody>
-                                </table>
+                                                    <div class="mt-1">
+                                                        <% dm_appointment_rate = current_agent.total_dms_this_month(current_agent) > 0 ? (current_agent.total_appointments_this_month(current_agent).to_f / current_agent.total_dms_this_month(current_agent).to_f * 100).round : 0 %>
+                                                        <span class="fs-18"><%= dm_appointment_rate %>%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col border-inline-end-dashed">
+                                                <div class="d-flex flex-column align-items-center p-3">
+                                                    <div class="d-flex align-items-center">
+                                                        <span class="fs-14 visit-gender female">アポ > 契約</span>
+                                                    </div>
+                                                    <div class="mt-1">
+                                                        <% appointment_contract_rate = current_agent.total_appointments_this_month(current_agent) > 0 ? (@total_contracts_this_month.to_f / current_agent.total_appointments_this_month(current_agent).to_f * 100).round : 0 %>
+                                                        <span class="fs-18"><%= appointment_contract_rate %>%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="text-center">
+                                    <%= link_to "目標を設定する", set_target_agent_path(@agent), class: "text-primary" %> <i class="ri-share-box-line align-middle text-primary"></i>
+                                </div>
                             </div>
                         </div>
-                        <div class="card-footer border-top-0">
+                    </div>
+                    <div class="col-lg-12 col-xxl-9">
+                        <div class="card custom-card overflow-hidden" style="height: 400px;">
+                            <div class="card-header justify-content-between">
+                                <div class="card-title">
+                                    月間レポート
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div id="earning-reports"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Start:: row-3 -->
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="card custom-card">
+                            <div class="card-header justify-content-between">
+                                <div class="card-title">
+                                    代理店ランキングTOP3
+                                </div>
+                                <div class="btn-list">
+                                    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="ri-add-line me-1 align-middle"></i>フィルター
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="filterDropdown">
+                                        <li><a class="dropdown-item" href="#">最小DM数</a></li>
+                                        <li><a class="dropdown-item" href="#">最小アポ数</a></li>
+                                        <li><a class="dropdown-item" href="#">代理店レベル</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table text-nowrap table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">代理店名</th>
+                                                <th scope="col">今月のアポ数</th>
+                                                <th scope="col">今月のDM数</th>
+                                                <th scope="col">代理店レベル</th>
+                                                <th scope="col">ステータス</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% @agents.each do |agent| %>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <span class="avatar avatar-sm me-2 avatar-rounded">
+                                                                <i class="material-icons text-secondary">account_circle</i>
+                                                            </span><%=agent.name%>
+                                                        </div>
+                                                    </td>
+                                                    <td><%=agent.total_appointments_this_month(agent)%></td>
+                                                    <td><%=agent.total_dms_this_month(agent)%></td>
+                                                    <td><%=agent.calculate_progress.first%></td>
+                                                    <td>
+                                                        <span class="badge bg-primary-transparent">New</span>
+                                                    </td>
+                                                </tr>
+                                            <% end %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="card-footer border-top-0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End:: row-3 -->
             </div>
-            <!-- End:: row-3 -->
         </div>
-    </div>
+    <% else %>
+        <div class="main-content pt-4 d-flex flex-column justify-content-center align-items-center h-100">
+            <h2 class="mb-4 text-center">Hi, Welcome👋</h2>
+            <%= link_to automation_index_path, class: "btn custom-btn-color" do %>
+                <i class="ri-file-chart-line align-middle"></i> Automation Pageへ
+            <% end %>
+        </div>
+
+    <% end %>
 </div>
-
-  <style>
-    .custom-header {
-        background-color: white;
-        border-bottom: 1px solid #ddd;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        height: 60px;
-        display: flex;
-        justify-content: flex-end;
-        padding-right: 40px; 
-        }
-
-    .menu-dropdown {
-        display: flex; 
-        justify-content: space-between; 
-        align-items: center; 
-        background-color: #dbdbdc;
-        padding: 10px 20px;
-        border-radius: 10px;
-    }
-
-    .custom-progress {
-        height: 25px;
-        margin-top: 10px;
-        background-color: #ececec;
-    }
-
-    .custom-progress-bar {
-        background-color: #007bff; 
-    }
-
-    .custom-btn-color {
-        border: 1px solid #007bff;
-        color: #007bff;
-    }
-
-    .custom-btn-color:hover {
-        border: 1px solid #007bff;
-        color: #007bff;
-        opacity: 0.8;
-    }
-    
-    .agent-level-title {
-        font-size: 32px;
-        font-weight: 500;
-    }
-
-    </style>
-    
 
  <script>         
     /* Earning Reports Chart */

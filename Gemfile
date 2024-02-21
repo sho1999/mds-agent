@@ -79,3 +79,6 @@ gem "aws-sdk-s3", require: false
 gem 'unicorn'
 gem 'sassc-rails'
 gem 'webpacker'
+gem 'google_drive'
+gem 'watir'
+gem 'selenium-webdriver'

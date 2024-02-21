@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
+  root to: "agents#mypage"
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
@@ -29,8 +30,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :automation, only: [:index]
+
   resources :daily_reports, only: [:new, :create]
 
-  # デフォルトのルート（ログインしていない場合）
-  root to: "agents#mypage"
+  post 'add_project_500', to: 'automation#add_project_500'
 end

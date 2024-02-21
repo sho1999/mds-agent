@@ -1,5 +1,51 @@
 @import "https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap";
 
+.custom-header {
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 60px;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 40px; 
+  }
+
+.menu-dropdown {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  background-color: #dbdbdc;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.custom-progress {
+  height: 25px;
+  margin-top: 10px;
+  background-color: #ececec;
+}
+
+.custom-progress-bar {
+  background-color: #007bff; 
+}
+
+.custom-btn-color {
+  border: 1px solid #007bff;
+  color: #007bff;
+}
+
+.custom-btn-color:hover {
+  border: 1px solid #007bff;
+  color: #007bff;
+  opacity: 0.8;
+}
+
+.agent-level-title {
+  font-size: 32px;
+  font-weight: 500;
+}
+
+
 
 /* src/assets/scss/styles.scss */
 :root {
