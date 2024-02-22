@@ -45,6 +45,10 @@
   font-weight: 500;
 }
 
+.btn-close {
+  color: white;
+}
+
 
 
 /* src/assets/scss/styles.scss */
@@ -245,12 +249,7 @@
 [data-theme-mode=dark] .app-sidebar .main-sidebar-header .header-logo .toggle-dark {
   display: none;
 }
-[data-theme-mode=dark] .btn-close {
-  filter: invert(1);
-}
-[data-theme-mode=dark] .alert .btn-close {
-  filter: unset;
-}
+
 [data-theme-mode=dark] .dropdown-menu {
   box-shadow: 0 1rem 1.125rem rgba(40, 40, 40, 0.15);
 }

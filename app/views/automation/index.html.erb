@@ -1,7 +1,41 @@
+<div class="modal" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="loadingModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <h2>実行中...</h2>
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="container mt-5">
     <h2>Automation Index</h2>
     <p>下のボタンをクリックすると案件追加が実行されます</p>
-    <%= button_to add_project_500_path, class: "btn custom-btn-color" do %>
+    <%= button_to add_project_500_path, id: "execute-button", class: "btn custom-btn-color" do %>
         <i class="ri-sticky-note-add-line align-middle"></i> 実行する
     <% end %>
 </div>
+
+<script>
+    // ローディングモーダルを表示する関数
+    function showLoadingModal() {
+        var myModal = new bootstrap.Modal(document.getElementById('loadingModal'), {});
+        myModal.show();
+    }
+
+    // ローディングモーダルを非表示にする関数
+    function hideLoadingModal() {
+        var myModalEl = document.getElementById('loadingModal');
+        var modal = bootstrap.Modal.getInstance(myModalEl); // モーダルのインスタンスを取得
+        modal.hide();
+    }
+
+    // 例: ボタンクリックでローディングモーダルを表示
+    document.getElementById("execute-button").addEventListener("click", function() {
+        showLoadingModal();
+    });
+
+</script>
