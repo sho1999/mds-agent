@@ -141,9 +141,7 @@ class WebsiteAutomator
             # 情報を更新
             submit_button = driver.find_element(:id, 'check')
             submit_button.click
-            
         end
-        
         driver.quit()
     end
 end
