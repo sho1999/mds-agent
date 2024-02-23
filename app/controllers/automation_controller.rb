@@ -6,7 +6,12 @@ class AutomationController < ApplicationController
         # スプレッドシートからデータを読み込む
         data = SpreadsheetService.read_output_spreadsheet
         # ウェブ自動操作を実行
-        WebsiteAutomator.perform_operations(data)
+        if data
+            WebsiteAutomator.perform_operations(data)
+        else
+            redirect_to root_path, alert: 'スプシのどこかに空白があります'
+            return
+        end
         redirect_to root_path, notice: 'Automation completed successfully.'
     end
 end

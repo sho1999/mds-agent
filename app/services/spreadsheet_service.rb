@@ -11,9 +11,17 @@ class SpreadsheetService
         data = []
         (3..max_rows).each do |row|
             row_data = (2..4).map { |col| worksheet[row, col] } # 2=B列, 4=D列
-            data << row_data
+            # 空欄が含まれている場合はループを終了し、dataにnilを設定
+            if row_data.include?('')
+                data = nil
+                break
+            else
+                data << row_data
+            end
         end
-        write_to_spreadsheet(data)
+        if data
+            write_to_spreadsheet(data)
+        end
         data
     end
 
