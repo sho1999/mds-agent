@@ -3,7 +3,7 @@ require 'selenium-webdriver'
 require 'date'
 
 class WebsiteAutomator
-    def self.perform_operations(data)
+    def self.add_project_500(data)
         options = Selenium::WebDriver::Chrome::Options.new
         options.add_argument('--headless') # ヘッドレスモードでの実行
         options.add_argument('--no-sandbox') # セキュリティサンドボックスを無効化
@@ -13,13 +13,10 @@ class WebsiteAutomator
 
         driver = Selenium::WebDriver.for :chrome, options: options
 
+        # ログイン
         driver.get("https://mds-fund.herokuapp.com/affiliaters/login")
-
-        # ログイン情報の入力
         driver.find_element(:name, 'login_id').send_keys('mds')
         driver.find_element(:name, 'login_pass').send_keys('YEMS4QECADMIN5434')
-
-        # ログインボタンをクリック
         driver.find_element(:name, 'commit').click        
 
         data.each do |row|

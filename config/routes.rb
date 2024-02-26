@@ -35,4 +35,5 @@ Rails.application.routes.draw do
   resources :daily_reports, only: [:new, :create]
 
   post 'add_project_500', to: 'automation#add_project_500'
+  post 'change_interview_date', to: 'automation#change_interview_date'
 end
