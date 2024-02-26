@@ -16,7 +16,7 @@
   <h2>案件追加 (500円)</h2>
   <div class="d-flex gap-2">
     <%= link_to "シートはこちら", "https://docs.google.com/spreadsheets/d/1R5_3hbo0pvgSytMcdSqUlaOKgbX89qRJulItVt0_HFw/edit?usp=sharing", target: "_blank", class: "btn btn-light"%>
-    <%= button_to "実行する", add_project_500_path, method: :get, class: "btn btn-primary" %>
+    <%= button_to "実行する", add_project_500_path, method: :post, id: "execute-button", class: "btn btn-primary" %>
   </div>
 </div>
 
@@ -24,7 +24,7 @@
   <h2>代理店の日付変更</h2>
   <%= link_to "使い方はこちら", "https://www.canva.com/design/DAF950u9zTA/MAe28FNd5r5cK7f-F3-g5Q/view?utm_content=DAF950u9zTA&utm_campaign=designshare&utm_medium=link&utm_source=editor", target: "_blank", class: "btn btn-light mb-4"%>
 
-  <%= form_with url: change_interview_date_path, local: true, class: "" do |form| %>
+  <%= form_with url: change_interview_date_path, class: "" do |form| %>
     <div class="d-flex gap-2 mb-3">
       <div class="">
         <%= form.label :link, "リンク", class: "form-label" %>
@@ -62,9 +62,11 @@
         showLoadingModal();
     });
 
-    // 例: ボタンクリックでローディングモーダルを表示
-    document.getElementById("execute-button-02").addEventListener("click", function() {
-        showLoadingModal();
+    document.addEventListener("DOMContentLoaded", function() {
+      // 例: ボタンクリックでローディングモーダルを表示
+      document.getElementById("execute-button-02").addEventListener("click", function() {
+          showLoadingModal();
+      });
     });
 
 </script>
