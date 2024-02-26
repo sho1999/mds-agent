@@ -255,6 +255,9 @@
             <%= link_to automation_index_path, class: "btn custom-btn-color" do %>
                 <i class="ri-file-chart-line align-middle"></i> Automation Pageへ
             <% end %>
+            <%= button_to destroy_agent_session_path, method: :delete, class: "dropdown-item" do %>
+                <i class="bi bi-box-arrow-right fs-22 me-2"></i>Log Out
+            <% end %>
         </div>
 
     <% end %>

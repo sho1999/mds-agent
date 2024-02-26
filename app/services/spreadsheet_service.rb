@@ -7,7 +7,13 @@ class SpreadsheetService
         spreadsheet = session.spreadsheet_by_key("1R5_3hbo0pvgSytMcdSqUlaOKgbX89qRJulItVt0_HFw")
         worksheet = spreadsheet.worksheets[0] # または `worksheet_by_title` などを使う
 
-        max_rows = worksheet.num_rows
+        max_rows = 0
+        (3..worksheet.num_rows).each do |row|
+            value = worksheet[row, 2] # 2はB列
+            break if value.nil? || value.strip.empty? # 空白セルが見つかったらループを抜ける
+            max_rows += 1
+        end
+        
         data = []
         (3..max_rows).each do |row|
             row_data = (2..4).map { |col| worksheet[row, col] } # 2=B列, 4=D列
