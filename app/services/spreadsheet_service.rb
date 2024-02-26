@@ -7,7 +7,7 @@ class SpreadsheetService
         spreadsheet = session.spreadsheet_by_key("1R5_3hbo0pvgSytMcdSqUlaOKgbX89qRJulItVt0_HFw")
         worksheet = spreadsheet.worksheets[0] # または `worksheet_by_title` などを使う
 
-        max_rows = 0
+        max_rows = 3
         (3..worksheet.num_rows).each do |row|
             value = worksheet[row, 2] # 2はB列
             break if value.nil? || value.strip.empty? # 空白セルが見つかったらループを抜ける
@@ -17,9 +17,7 @@ class SpreadsheetService
         data = []
         (3..max_rows).each do |row|
             row_data = (2..4).map { |col| worksheet[row, col] } # 2=B列, 4=D列
-            # 空欄が含まれている場合はループを終了し、dataにnilを設定
             if row_data.include?('')
-                data = nil
                 break
             else
                 data << row_data
@@ -27,7 +25,7 @@ class SpreadsheetService
         end
         if data
             write_to_spreadsheet(data)
-        end
+        end        
         data
     end
 

@@ -5,10 +5,10 @@ require 'date'
 class WebsiteAutomator
     def self.perform_operations(data)
         options = Selenium::WebDriver::Chrome::Options.new
-        # options.add_argument('--headless') # ヘッドレスモードでの実行
+        options.add_argument('--headless') # ヘッドレスモードでの実行
         options.add_argument('--no-sandbox') # セキュリティサンドボックスを無効化
         options.add_argument('--disable-dev-shm-usage') # /dev/shmの使用を回避
-        # options.add_argument('--disable-gpu') # GPUハードウェアアクセラレーションを無効化（オプショナル）
+        options.add_argument('--disable-gpu') # GPUハードウェアアクセラレーションを無効化（オプショナル）
         options.add_argument('--remote-debugging-port=9222') # リモートデバッグポートを指定
 
         driver = Selenium::WebDriver.for :chrome, options: options
@@ -20,12 +20,11 @@ class WebsiteAutomator
         driver.find_element(:name, 'login_pass').send_keys('YEMS4QECADMIN5434')
 
         # ログインボタンをクリック
-        driver.find_element(:name, 'commit').click
+        driver.find_element(:name, 'commit').click        
 
         data.each do |row|
-            # 代理店IDを入力
+            # 代理店IDを入力                
             driver.get("https://mds-fund.herokuapp.com/affiliaters/edit_business_case")
-
 
             driver.find_element(:id, 'business_case_original_id').send_keys(row[0])
         
@@ -141,10 +140,6 @@ class WebsiteAutomator
             # 情報を更新
             element = driver.find_element(id: 'check')
             driver.execute_script("arguments[0].click();", element)
-
-            submit_button = driver.find_element(:id, 'check')
-            driver.execute_script("arguments[0].click();", submit_button)
-
         end
         driver.quit()
     end
