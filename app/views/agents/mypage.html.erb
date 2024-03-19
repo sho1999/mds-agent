@@ -63,7 +63,7 @@
                                         </div>
                                         <div class="d-flex justify-content-between align-items-end">
                                             <span class="agent-level-title">Lv. <%= @current_level %></span>
-                                            <% if current_level == 10 %>
+                                            <% if @current_level == 10 %>
                                                 <span>Lv. Max</span>
                                             <% else %>
                                                 <span>Lv. <%= @current_level + 1 %></span>
