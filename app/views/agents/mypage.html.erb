@@ -63,7 +63,11 @@
                                         </div>
                                         <div class="d-flex justify-content-between align-items-end">
                                             <span class="agent-level-title">Lv. <%= @current_level %></span>
-                                            <span>Lv. <%= @current_level + 1 %></span>
+                                            <% if current_level == 10 %>
+                                                <span>Lv. Max</span>
+                                            <% else %>
+                                                <span>Lv. <%= @current_level + 1 %></span>
+                                            <% end %>
                                         </div>
                                         <div class="progress custom-progress">
                                             <div class="progress-bar custom-progress-bar" role="progressbar" style="width: <%= @level_progress %>%;" aria-valuenow="<%= @level_progress %>" aria-valuemin="0" aria-valuemax="100"><%= @level_progress %>%</div>

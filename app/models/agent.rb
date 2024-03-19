@@ -60,12 +60,15 @@ class Agent < ApplicationRecord
     # ユーザーの現在のレベルと進捗度を計算
     current_level = level_thresholds.index { |threshold| total_points < threshold } || level_thresholds.size
 
-    if current_level > 0
+    if current_level == 10
+      points_for_next_level = 11
+      progress_within_level = 0
+      level_progress = 0
+    elsif current_level > 0
       points_for_next_level = level_thresholds[current_level] - level_thresholds[current_level - 1]
       progress_within_level = total_points - level_thresholds[current_level - 1]
       level_progress = (progress_within_level.to_f / points_for_next_level * 100).round
     else
-      # 最低レベル（レベル1）の場合、進捗度を0%とする
       level_progress = 0
     end
 

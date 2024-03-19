@@ -17,20 +17,33 @@
 
                         <div class="d-flex align-items-center justify-content-between pt-1 pb-1">
                             <p class="text-muted mb-0">必要な契約数</p>
-                            <h4 id="contracts-needed" class="mb-0 text-primary">0</h4>
+                            <% if @agent.monthly_amount_revenue %>
+                                <% target_contracts = @agent.monthly_amount_revenue / 6000 %>
+                                <h4 id="contracts-needed" class="mb-0 text-primary"><%=target_contracts%></h4>
+                            <% else %>
+                                <h4 id="contracts-needed" class="mb-0 text-primary">0</h4>
+                            <% end %>
                         </div>
 
                         <div class="d-flex align-items-center justify-content-between pt-1 pb-1">
                             <p class="text-muted mb-0">必要なアポ数</p>
-                            <h4 id="appointments-needed" class="mb-0 text-primary">0</h4>
+                            <% if @agent.monthly_amount_revenue %>
+                                <% target_appts = target_contracts * 2 %>
+                                <h4 id="appointments-needed" class="mb-0 text-primary"><%=target_appts%></h4>
+                            <% else %>
+                                <h4 id="appointments-needed" class="mb-0 text-primary">0</h4>
+                            <% end %>                            
                         </div>
 
                         <div class="d-flex align-items-center justify-content-between pt-1 pb-1">
                             <p class="text-muted mb-0">必要なDM数</p>
-                            <h4 id="dms-needed" class="mb-0 text-primary">0</h4>
+                            <% if @agent.monthly_amount_revenue %>
+                                <% target_dms = target_appts * 70 %>
+                                <h4 id="dms-needed" class="mb-0 text-primary"><%=target_dms%></h4>
+                            <% else %>
+                                <h4 id="dms-needed" class="mb-0 text-primary">0</h4>
+                            <% end %>  
                         </div>
-
-
                         <!-- 送信ボタン -->
                         <div class="actions mt-3">
                             <%= form.submit "設定する", class: 'btn custom-btn-color btn-lg w-100' %>
@@ -59,8 +72,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // 必要な契約数、アポ数、DM数を計算
         var contractsNeeded = revenue / 6000; // 1件あたりの収益
-        var appointmentsNeeded = contractsNeeded * 2.5; // 契約に必要なアポ数
-        var dmsNeeded = appointmentsNeeded * 50; // アポに必要なDM数
+        var appointmentsNeeded = contractsNeeded * 2; // 契約に必要なアポ数
+        var dmsNeeded = appointmentsNeeded * 70; // アポに必要なDM数
 
         // 結果を表示
         document.getElementById('contracts-needed').innerText = contractsNeeded.toFixed(0);
