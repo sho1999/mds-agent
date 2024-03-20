@@ -1,4 +1,47 @@
-
+ 
+<div class="overlay">
+   <div class="onboarding-material">
+       <div id="onboardingSlide" class="carousel slide custom-carousel" data-ride="carousel" data-interval="false">
+           <div class="carousel-inner">
+               <div class="carousel-item active">
+                   <div class="carousel-content">
+                       <%= image_tag 'onboarding_slide1_01.png', class: 'd-block w-50', alt: 'First slide' %>
+                       <h3 >MDS GAMEの使い方</h3>
+                       <p>私たちは楽しく収益化ができるよう<br>代理店活動をゲームにしました。<br>
+                           1つ1つタスクをこなしながら<br>目標の収益を達成しましょう。</p>
+                   </div>
+               </div>
+               <div class="carousel-item">
+                   <div class="carousel-content">
+                       <%= image_tag 'onboarding_slide1_02.png', class: 'd-block', alt: 'First slide' %>
+                       <p>使い方はとてもシンプルです。<br>毎日の活動を記入するだけ！</p>
+                   </div>
+               </div>
+               <div class="carousel-item">
+                   <div class="carousel-content">
+                       <%= image_tag 'onboarding_slide1_03.png', class: 'd-block', alt: 'First slide' %>
+                       <p>毎日の活動によりポイントが貯まり、<br>代理店レベルが上がります。</p>
+                   </div>
+               </div>
+               <div class="carousel-item">
+                   <div class="carousel-content">
+                       <%= image_tag 'onboarding_slide1_04.png', class: 'd-block', alt: 'First slide' %>
+                       <p>嘘はよくないですが、<br>今日だけ特別に報告をしてみましょう！<br>例 DM数：30、アポ数：1、契約数：0</p>
+                       <%= link_to '報告してみる', new_daily_report_path(@agent), class: 'btn btn-light w-100' %>
+                   </div>
+               </div>
+           </div>
+           <div class="carousel-controls">
+               <button class="carousel-control-prev" type="button" data-bs-target="#onboardingSlide" data-bs-slide="prev">
+                   <i class="bi bi-arrow-left"></i> 
+               </button>
+               <button class="carousel-control-next" type="button" data-bs-target="#onboardingSlide" data-bs-slide="next">
+                   <i class="bi bi-arrow-right"></i> 
+               </button>
+           </div>
+       </div>
+   </div>
+</div>
     
 <style>
     .overlay {

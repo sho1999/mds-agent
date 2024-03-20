@@ -5,9 +5,9 @@ class DailyReportsController < ApplicationController
   
     def create
       @daily_report = DailyReport.new(daily_report_params)
-      @daily_report.agent_id = current_agent.id # 現在ログインしているAgentのIDをセット
+      @daily_report.agent_id = current_agent.id 
       if @daily_report.save
-        redirect_to mypage_agent_path(current_agent), notice: 'レポートが正常に作成されました。' # 適切なリダイレクト先に変更してください
+        redirect_to mypage_agent_path(current_agent), notice: 'レポートが正常に作成されました。'
       else
         render :new
       end

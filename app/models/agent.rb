@@ -55,7 +55,7 @@ class Agent < ApplicationRecord
     # ポイントの計算
     total_points = (self.total_dms / 10) + (self.total_appointments * 5) + (self.total_contracts * 30)
 
-    level_thresholds = [0, 30, 60, 100, 150, 210, 280, 360, 450, 550]
+    level_thresholds = [0, 60, 120, 240, 480, 800, 1250, 1750, 2350, 3000]
 
     # ユーザーの現在のレベルと進捗度を計算
     current_level = level_thresholds.index { |threshold| total_points < threshold } || level_thresholds.size

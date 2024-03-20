@@ -12,32 +12,32 @@
 </style>
 
 <div class="form-section" style="width: 350px; margin: auto;">
-  <h2>Sign up</h2>
+  <h2>新規登録</h2>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-floating" }) do |f| %>
     <%= render "agents/shared/error_messages", resource: resource %>
 
     <div class="form-floating mb-3" style="width: 350px;">
       <%= f.email_field :email, autocomplete: "email", placeholder: "Email address", class: "form-control", id: "floatingEmail" %>
-      <%= f.label :email, "Email", class: "form-label" %>
+      <%= f.label :email, "メールアドレス", class: "form-label" %>
     </div>
 
     <div class="form-floating mb-3" style="width: 350px;">
       <%= f.number_field :agent_id, placeholder: "Agent ID", class: "form-control", id: "floatingAgentID" %>
-      <%= f.label :agent_id, "Agent ID", class: "form-label" %>
+      <%= f.label :agent_id, "代理店ID", class: "form-label" %>
     </div>
 
     <div class="form-floating mb-3" style="width: 350px; margin: auto;">
       <%= f.text_field :name, placeholder: "Name", class: "form-control", id: "floatingName" %>
-      <%= f.label :name, "Name", class: "form-label" %>
+      <%= f.label :name, "お名前", class: "form-label" %>
     </div>
 
     <div class="form-floating mb-3" style="width: 350px;">
       <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password", class: "form-control", id: "floatingPassword" %>
-      <%= f.label :password, "Password", class: "form-label" %>
+      <%= f.label :password, "パスワードを作成", class: "form-label" %>
     </div>
 
     <div class="actions">
-      <%= f.submit "Sign up", class: "btn custom-btn-color w-100 mb-4" %>
+      <%= f.submit "アカウントを作成する", class: "btn custom-btn-color w-100 mb-4" %>
     </div>
   <% end %>
 
