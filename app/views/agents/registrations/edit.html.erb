@@ -12,29 +12,24 @@
 </style>
 
 <div class="form-section" style="width: 350px; margin: auto;">
-  <h2>Edit <%= resource_name.to_s.humanize %></h2>
+  <h2>アカウント情報</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "form-floating" }) do |f| %>
     <%= render "agents/shared/error_messages", resource: resource %>
-
-    <div class="form-floating mb-3">
-      <%= f.email_field :email, autocomplete: "email", placeholder: "Email", class: "form-control", id: "floatingEmail" %>
-      <%= f.label :email, "Email", class: "form-label" %>
-    </div>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <div class="mb-3">Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
 
     <div class="form-floating mb-3" style="width: 350px;">
-      <%= f.number_field :agent_id, placeholder: "Agent ID", class: "form-control", id: "floatingAgentID" %>
-      <%= f.label :agent_id, "Agent ID", class: "form-label" %>
+      <%= f.text_field :name, placeholder: "Name", class: "form-control", id: "floatingName" %>
+      <%= f.label :name, "名前", class: "form-label" %>
     </div>
 
     <div class="actions mb-3">
-      <%= f.submit "Update", class: "btn custom-btn-color w-100 mb-4" %>
+      <%= f.submit "更新する", class: "btn custom-btn-color w-100 mb-4" %>
     </div>
   <% end %>
 
-  <%= link_to "Back", :back, class: "btn btn-secondary" %>
+  <%= link_to "戻る", :back, class: "btn" %>
 </div>
