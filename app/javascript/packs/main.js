@@ -1,5 +1,3 @@
-console.log("hei");
-
 (function () {
   "use strict";
   if (localStorage.getItem("udondarktheme")) {

@@ -1,5 +1,3 @@
-console.log("hello");
-
 /* Sales Card Chart */
 let options1 = {
   series: [{

@@ -17,25 +17,28 @@
             </div>
             <div class="card custom-card">
                 <div class="card-body">
-                    <h6 class="card-title fw-medium">はじめに</h6>
-                    <p class="card-text text-muted">フォロワーさんを伸ばすのが目的か収益化をするのが目的か？</p>
+                    <h6 class="card-title mb-0 fw-medium">収益化までの流れを確認</h6>
                 </div>
                 <div class="card-footer d-flex justify-content-between align-items-center p-2">
-                    <a href="#" class="btn btn-light btn-sm" data-toggle="modal" data-target="#step1-1Modal">もっと詳しく</a>
-                    <div class="modal fade" id="step1-1Modal" tabindex="-1" role="dialog" aria-labelledby="step1-1ModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
+                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#step01">
+                        もっと詳しく
+                    </button>
+                    <div class="modal fade" id="step01" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="step01Label" aria-hidden="true">
+                        <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="step1-1ModalLabel">フォロワー増加と収益化</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
+                                    <h1 class="modal-title fs-5" id="step01Label">収益化までの流れを確認しよう</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    ここにコンテンツや説明を入れます。
+                                    <p>最も収益化しやすい方法は「無料インスタコンサルへの送客」です。ビジネス目的のインスタアカウントは国内に1000万アカウントあると言われています。
+                                    <br><br>そこで「無料でコンサルをするよ」と提案することで、どれだけの反響があるか想像してみてください。このアプローチにより私たちはたくさんのアポを獲得できます。
+                                    <br><br>皆さんが行うことはスキマ時間に1日20通ほどDMをポチポチと送るだけ、あとはラテでも飲みながらゆっくりしてください。面倒な日程調整や難しいコンサルは全部僕たちに丸投げできます。
+                                    <br><br>下の画像が収益化プロセスの全体像になります。</p>
+                                    <%= image_tag 'flow_to_monetization.png', class: 'd-block w-100 rounded' %>
                                 </div>
-                                <div class="modal-footer p-2">
-                                    <button type="button" class="btn btn-light w-100" data-dismiss="modal">理解した</button>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">確認した</button>
                                 </div>
                             </div>
                         </div>
@@ -47,25 +50,32 @@
             </div>
             <div class="card custom-card">
                 <div class="card-body">
-                    <h6 class="card-title fw-medium">プロフィール写真の設定</h6>
-                    <p class="card-text text-muted">まずはプロフィールの写真を設定しよう</p>
+                    <h6 class="card-title mb-0 fw-medium">「どんな内容」のDMを送るのか</h6>
                 </div>
                 <div class="card-footer d-flex justify-content-between align-items-center p-2">
-                    <a href="#" class="btn btn-light btn-sm" data-toggle="modal" data-target="#step1-2Modal">もっと詳しく</a>
-                    <div class="modal fade" id="step1-2Modal" tabindex="-1" role="dialog" aria-labelledby="step1-2ModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
+                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        もっと詳しく
+                    </button>
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="step1-2ModalLabel">プロフィール写真の設定</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">「どんな内容」のDMを送るのか</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    ここにコンテンツや説明を入れます。
+                                    <p>「よし、そしたらDMを送ってみよう！」となった時、皆さんが必ず躓くポイントは「誰に」「どんな内容」を送れば良いかです。</p>
+                                    <p>色々なDM内容がありますが、迷ったらまずは下記のテンプレをコピペして送ってみて下さい。</p>
+                                    <p>＝＝＝＝＝＝＝＝＝＝＝＝＝<br>〇〇さんの投稿を見させて頂き、ピッタリだと思いお声掛けさせて頂きました！
+                                    <br><br>将来弊社からのPRのお仕事を受けていただく事が条件なのですが、その代わりフォロワーが1万人に達し影響力がつくまで、弊社が徹底的に無料でサポートします🙇
+                                    <br><br>ご興味があれば、添付させて頂いたリンクを確認して頂いた後に「興味あり」と返信を下さい！
+                                    <br>https://www.lim-japan.com/?original_id=あなたのID
+                                    <br>＝＝＝＝＝＝＝＝＝＝＝＝＝</p>
+                                    <p>※あなたの代理店IDは<a href="https://mds-fund.herokuapp.com/" target="_blank" rel="noopener noreferrer" class="custom-link">クラスタ管理画面</a>の左上にあります</p>
+                                    <%= image_tag 'how_to_find_ur_agent_id.png', class: 'd-block w-100 rounded' %>
                                 </div>
-                                <div class="modal-footer p-2">
-                                    <button type="button" class="btn btn-light w-100" data-dismiss="modal">理解した</button>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">確認した</button>
                                 </div>
                             </div>
                         </div>
@@ -77,25 +87,28 @@
             </div>
             <div class="card custom-card">
                 <div class="card-body">
-                    <h6 class="card-title fw-medium">プロフィール文設定</h6>
-                    <p class="card-text text-muted">プロフィール文の設定を使用</p>
+                    <h6 class="card-title mb-0 fw-medium">「誰に」DMを送るのか</h6>
                 </div>
                 <div class="card-footer d-flex justify-content-between align-items-center p-2">
-                    <a href="#" class="btn btn-light btn-sm" data-toggle="modal" data-target="#step1-3Modal">もっと詳しく</a>
-                    <div class="modal fade" id="step1-3Modal" tabindex="-1" role="dialog" aria-labelledby="step1-3ModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
+                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#step02">
+                        もっと詳しく
+                    </button>
+                    <div class="modal fade" id="step02" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="step02Label" aria-hidden="true">
+                        <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="step1-3ModalLabel">プロフィール文の設定</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
+                                    <h1 class="modal-title fs-5" id="step02Label">「誰に」DMを送るの</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    ここにコンテンツや説明を入れます。
+                                    <p>「誰に」送るかはおばあちゃんでもわかるくらいシンプルなスライド資料にしました。効果的なターゲットの探し方や実際のターゲット例について詳しく解説しています。</p>
+                                    <div class="custom-step-div">
+                                        <%= image_tag 'how_to_get_appt.png', class: 'd-block w-50 rounded' %>
+                                    </div>
+                                    <%= link_to '資料を見る', "https://bit.ly/how-to-get-insta-appt", target: "_blank", class: 'btn btn-light w-100'%>
                                 </div>
-                                <div class="modal-footer p-2">
-                                    <button type="button" class="btn btn-light w-100" data-dismiss="modal">理解した</button>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">確認した</button>
                                 </div>
                             </div>
                         </div>
@@ -105,6 +118,7 @@
                     </div>
                 </div>
             </div>
+            <%= link_to "戻る", :back, class: "btn" %>
         </div>
     </div>
   </div>
@@ -123,8 +137,25 @@
         padding: 10px;
     }
 
+    .progress-indicator {
+        width: 320px;
+    }
+    .custom-link {
+        color: #007bff; /* Bootstrapのデフォルトリンク色 */
+    }
+    .custom-link:hover {
+        color: #0056b3; /* ホバー時の色を少し濃く */
+    }
     .card-slider {
         overflow-x: auto;
+    }
+
+    .custom-step-div {
+        margin-bottom: 20px;
+        display: flex; 
+        align-items: center;
+        justify-content: center; /* これを追加 */
+
     }
 
     .card {
