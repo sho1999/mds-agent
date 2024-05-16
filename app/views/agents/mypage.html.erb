@@ -13,16 +13,19 @@
                         </div>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <%= link_to edit_agent_registration_path, class: "dropdown-item" do %>
-                                <i class="bi bi-person fs-22 me-2"></i>Profile
+                                <i class="bi bi-person fs-16 me-2"></i>Profile
+                            <% end %>
+                            <%= link_to appointment_agent_path(@agent), class: "dropdown-item" do %>
+                                <i class="bi bi-calendar-check fs-16 me-2"></i>アポ確認
                             <% end %>
                             <%= link_to task_agent_path(@agent), class: "dropdown-item" do %>
                                 <i class="bi bi-check-square fs-16 me-2"></i>Task Manager
                             <% end %>
                             <%= link_to "https://lin.ee/RdJmOTD", class: "dropdown-item" do %>
-                                <i class="bi bi-headset fs-22 me-2"></i>Support
+                                <i class="bi bi-headset fs-16 me-2"></i>Support
                             <% end %>
                             <%= button_to destroy_agent_session_path, method: :delete, class: "dropdown-item" do %>
-                                <i class="bi bi-box-arrow-right fs-22 me-2"></i>Log Out
+                                <i class="bi bi-box-arrow-right fs-16 me-2"></i>Log Out
                             <% end %>
                         </ul>
                     </div>

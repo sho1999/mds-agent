@@ -26,8 +26,8 @@ Rails.application.routes.draw do
       get 'top'
       get 'onboarding'
       get 'set_target'
+      get 'appointment'
       get 'mypage'
-      get 'test'
     end
   end
 

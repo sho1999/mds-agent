@@ -1,0 +1,22 @@
+<h1 class="text-center my-4">My Appointments</h1>
+<div class="container">
+  <table class="table table-striped table-bordered table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>日時</th>
+        <th>ステータス</th>
+        <th>名前</th>
+        <th>インスタ名</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @my_appointments.each do |appointment| %>
+        <tr>
+          <% appointment.each do |cell| %>
+            <td><%= cell %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

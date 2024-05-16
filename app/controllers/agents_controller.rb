@@ -48,6 +48,10 @@ class AgentsController < ApplicationController
   def top
   end
 
+  def appointment
+    @my_appointments = SpreadsheetService.get_my_appointments(current_agent.agent_id)      
+  end
+
   def onboarding
     @agent = current_agent
   end
