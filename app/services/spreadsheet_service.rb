@@ -92,6 +92,7 @@ class SpreadsheetService
         shimotori = session.spreadsheet_by_url("https://docs.google.com/spreadsheets/d/1YVMsJdbqx0bXlfFp_WawQE0RPTx30Cb_UHeVMdEbTIk/edit?usp=sharing").worksheets[0]
         matsumaru = session.spreadsheet_by_url("https://docs.google.com/spreadsheets/d/1JUKpJ-DPhVWj1Jq23CpCod-naMUXjlkiQA-Tx5GsOik/edit?usp=sharing").worksheets[0]
         ukitake = session.spreadsheet_by_url("https://docs.google.com/spreadsheets/d/1mDlWYOlN83J_dnSTTng1t0oAdi0q637Hpwmvium_GLU/edit").worksheets[0]
+        kasuya = session.spreadsheet_by_url("https://docs.google.com/spreadsheets/d/19xurtQMtRML5QCjp7cst4eJlE8V5b7Amk6uaRhnkDfY/edit?usp=sharing").worksheets[0]
         all_appt_sheet = session.spreadsheet_by_url("https://docs.google.com/spreadsheets/d/11Ps1iEYe9E9v_CIyWjZiF05-V9j_wvPV4fUuU12Kp2Q/edit").worksheets[0]
     
         # すべてのスプレッドシートからデータを取得して all_appt_sheet に追加
@@ -100,7 +101,8 @@ class SpreadsheetService
         [sugi, [2, 4, 10, 18, 17, 7]],
         [shimotori, [2, 4, 10, 16, 17, 7]],
         [matsumaru, [2, 4, 10, 17, 16, 7]],
-        [ukitake, [2, 4, 10, 18, 17, 7]]
+        [ukitake, [2, 4, 10, 18, 17, 7]],
+        [kasuya, [2, 4, 10, 17, 16, 7]]
         ].each_with_index do |(sheet, columns), index|
             start_row = get_last_nonempty_row(all_appt_sheet) + 1
 
@@ -115,7 +117,7 @@ class SpreadsheetService
         all_appt_sheet.save
     
         # クリア処理
-        [sakamaki, sugi, shimotori, matsumaru, ukitake].each do |sheet|
+        [sakamaki, sugi, shimotori, matsumaru, ukitake, kasuya].each do |sheet|
             num_rows = sheet.num_rows  # シートの総行数を取得
             if num_rows > 1
               # 2行目から最後の行まで、1列目から最後の列までの範囲を指定してクリア
