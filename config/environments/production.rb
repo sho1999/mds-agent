@@ -6,6 +6,7 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.enable_reloading = false
   config.eager_load = true	
+  config.hosts << "mds-agent.com"
   Rails.application.config.hosts << "mds-agent.com"
   Rails.application.config.hosts << "www.mds-agent.com"
   # Rails.application.config.hosts << "13.230.216.131" # EC2インスタンスのIPアドレス
