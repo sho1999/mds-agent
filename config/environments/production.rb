@@ -8,7 +8,8 @@ Rails.application.configure do
   config.eager_load = true	
   Rails.application.config.hosts << "mds-agent.com"
   Rails.application.config.hosts << "www.mds-agent.com"
-  Rails.application.config.hosts << "13.230.216.131" # EC2インスタンスのIPアドレス
+  # Rails.application.config.hosts << "13.230.216.131" # EC2インスタンスのIPアドレス
+  Rails.application.config.hosts << "3.112.60.223" # EC2インスタンスのIPアドレス
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
@@ -97,6 +98,8 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+
+  
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
