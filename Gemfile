@@ -78,7 +78,7 @@ gem 'dotenv-rails'
 gem 'sqlite3', '~> 1.4'
 gem "aws-sdk-s3", require: false
 gem 'unicorn'
-gem 'sassc-rails'
+gem 'sassc-rails', '>= 2.1.2'
 gem 'webpacker'
 gem 'google_drive'
 gem 'watir'
