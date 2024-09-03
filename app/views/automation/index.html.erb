@@ -1,8 +1,66 @@
+
+<div class="flex items-center justify-center min-h-screen space-x-4">
+
+  <div class="h-[480px] max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col">
+    <%= image_tag "add_500.png", class: "rounded-t-lg", alt: "" %>
+    <div class="p-3 flex-grow">
+      <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">500円の案件追加（アポ獲得）</h5>
+      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">シートに書かれた内容が案件追加されます。</p>
+    </div>
+    <div class="p-3 mt-auto">
+      <%= link_to "シートはこちら", "https://docs.google.com/spreadsheets/d/1R5_3hbo0pvgSytMcdSqUlaOKgbX89qRJulItVt0_HFw/edit?usp=sharing", target: "_blank", class: "w-full block text-center py-2.5 px-5 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-100 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100" %>
+      <%= button_to "実行する", add_project_500_path, method: :post, id: "execute-button", class: "w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
+    </div>
+  </div>
+
+
+
+  <div class="h-[480px] max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col">
+    <%= image_tag "agent_date.png", class: "rounded-t-lg", alt: "" %>
+
+    <div class="p-3 flex-grow">
+      <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">代理店の日付変更</h5>
+      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">代理店との面談日が希望日に変更されます</p>
+
+      <%= form_with url: change_interview_date_path, class: "" do |form| %>
+        <div class="mb-3">
+          <%= form.text_field :link, id: "link-input", class: "mt-1 block w-full rounded-md border-gray-100 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50", placeholder: "URL" %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.date_field :date, id: "date-input", class: "mt-1 block w-full rounded-md border-gray-100 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50", placeholder: "希望変更日" %>
+        </div>
+
+        <div class="">
+          <%= form.submit "実行する", id: "execute-button-02", class: "w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+
+
+
+  <div class="h-[480px] max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col">
+      <%= image_tag "uru.png", class: "rounded-t-lg", alt: "" %>
+      <div class="p-3 flex-grow">
+          <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">URUの課題チェック</h5>
+          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Ur-uの課題チェックが行われます。</p>
+      </div>
+      <div class="p-3 mt-auto">
+          <%= button_to "実行する", check_uru_task_path, method: :post, id: "execute-button", class: "w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
+      </div>
+  </div>
+
+</div>
+
+
+
 <div class="modal" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="loadingModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-body text-center">
-        <h2>実行中...</h2>
+        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">実行中...しばしお待ちを😯</h5>
         <div class="spinner-border" role="status">
           <span class="sr-only">Loading...</span>
         </div>
@@ -10,37 +68,6 @@
     </div>
   </div>
 </div>
-
-
-<div class="container mt-5">
-  <h2>案件追加 (500円)</h2>
-  <div class="d-flex gap-2">
-    <%= link_to "シートはこちら", "https://docs.google.com/spreadsheets/d/1R5_3hbo0pvgSytMcdSqUlaOKgbX89qRJulItVt0_HFw/edit?usp=sharing", target: "_blank", class: "btn btn-light"%>
-    <%= button_to "実行する", add_project_500_path, method: :post, id: "execute-button", class: "btn btn-primary" %>
-  </div>
-</div>
-
-<div class="container mt-5">
-  <h2>代理店の日付変更</h2>
-  <%= link_to "使い方はこちら", "https://www.canva.com/design/DAF950u9zTA/MAe28FNd5r5cK7f-F3-g5Q/view?utm_content=DAF950u9zTA&utm_campaign=designshare&utm_medium=link&utm_source=editor", target: "_blank", class: "btn btn-light mb-4"%>
-
-  <%= form_with url: change_interview_date_path, class: "" do |form| %>
-    <div class="d-flex gap-2 mb-3">
-      <div class="">
-        <%= form.label :link, "リンク", class: "form-label" %>
-        <%= form.text_field :link, id: "link-input", class: "form-control", placeholder: "URL" %>
-      </div>
-      <div class="">
-        <%= form.label :date, "希望変更日", class: "form-label" %>
-        <%= form.date_field :date, id: "date-input", class: "form-control", placeholder: "希望変更日" %>
-      </div>
-    </div>
-    <div class="">
-      <%= form.submit "実行する", id: "execute-button-02", class: "btn btn-primary" %>
-    </div>
-  <% end %>
-</div>
-
 
 
 <script>

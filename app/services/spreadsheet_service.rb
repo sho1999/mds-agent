@@ -82,7 +82,7 @@ class SpreadsheetService
         my_appointment_data
     end
 
-    def update_all_sheets
+    def self.update_all_sheets
         # Google Drive セッションを開始
         session = GoogleDrive::Session.from_service_account_key(Rails.root.join('mds-agent-management-bcc43f1a58ee.json'))
     
@@ -131,7 +131,7 @@ class SpreadsheetService
       private
     
       # 最後の非空白行を取得
-      def get_last_nonempty_row(sheet)
+      def self.get_last_nonempty_row(sheet)
         last_row = sheet.rows.find_index { |row| row.compact.empty? }
         last_row || sheet.num_rows
       end

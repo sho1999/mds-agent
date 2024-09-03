@@ -37,4 +37,5 @@ Rails.application.routes.draw do
 
   post 'add_project_500', to: 'automation#add_project_500'
   post 'change_interview_date', to: 'automation#change_interview_date'
+  post 'check_uru_task', to: 'automation#check_uru_task'
 end

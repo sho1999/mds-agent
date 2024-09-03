@@ -1,15 +1,20 @@
 require 'watir'
 require 'selenium-webdriver'
 require 'date'
+require 'webdrivers' # 追加
 
 class ChangeInterviewDate 
     def self.main(link, date)
+        # Webdrivers::Chromedriver.update
+
+        # Webdriversの自動アップデートを無効化
+        Webdrivers::Chromedriver.required_version = '128.0.6613.84'
+        
+        # # 手動でchromedriverのパスを設定
+        # Selenium::WebDriver::Chrome.driver_path = "/opt/homebrew/bin/chromedriver"
+
         options = Selenium::WebDriver::Chrome::Options.new
         options.add_argument('--headless') # ヘッドレスモードでの実行
-        # options.add_argument('--no-sandbox') # セキュリティサンドボックスを無効化
-        # options.add_argument('--disable-dev-shm-usage') # /dev/shmの使用を回避
-        # options.add_argument('--disable-gpu') # GPUハードウェアアクセラレーションを無効化（オプショナル）
-        # options.add_argument('--remote-debugging-port=9222') # リモートデバッグポートを指定
 
         driver = Selenium::WebDriver.for :chrome, options: options
 
