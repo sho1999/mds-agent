@@ -1,7 +1,6 @@
 require 'watir'
 require 'selenium-webdriver'
 require 'date'
-require 'webdrivers' # 追加
 
 class ChangeInterviewDate 
     def self.main(link, date)
