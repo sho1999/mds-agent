@@ -1,6 +1,5 @@
-
 <div class="flex items-center justify-center min-h-screen space-x-4">
-
+  <!-- 500円の案件追加（アポ獲得） Block -->
   <div class="h-[480px] max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col">
     <%= image_tag "add_500.png", class: "rounded-t-lg", alt: "" %>
     <div class="p-3 flex-grow">
@@ -9,38 +8,31 @@
     </div>
     <div class="p-3 mt-auto">
       <%= link_to "シートはこちら", "https://docs.google.com/spreadsheets/d/1R5_3hbo0pvgSytMcdSqUlaOKgbX89qRJulItVt0_HFw/edit?usp=sharing", target: "_blank", class: "w-full block text-center py-2.5 px-5 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-100 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100" %>
-      <%= button_to "実行する", add_project_500_path, method: :post, id: "execute-button", class: "w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
+      <%= button_to "実行する", add_project_500_path, method: :post, id: "execute-button-500", class: "w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800", data: { turbo: "false", action: "click->modal#showLoading" } %>
     </div>
   </div>
 
-
-
+  <!-- 代理店の日付変更 Block -->
   <div class="h-[480px] max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col">
     <%= image_tag "agent_date.png", class: "rounded-t-lg", alt: "" %>
-
     <div class="p-3 flex-grow">
       <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">代理店の日付変更</h5>
       <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">代理店との面談日が希望日に変更されます</p>
-
       <%= form_with url: change_interview_date_path, class: "" do |form| %>
         <div class="mb-3">
           <%= form.text_field :link, id: "link-input", class: "mt-1 block w-full rounded-md border-gray-100 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50", placeholder: "URL" %>
         </div>
-
         <div class="mb-3">
           <%= form.date_field :date, id: "date-input", class: "mt-1 block w-full rounded-md border-gray-100 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50", placeholder: "希望変更日" %>
         </div>
-
         <div class="">
-          <%= form.submit "実行する", id: "execute-button-02", class: "w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
+          <%= form.submit "実行する", id: "execute-button-date", class: "w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800", data: { turbo: "false", action: "click->modal#showLoading" } %>
         </div>
       <% end %>
     </div>
   </div>
 
-
-
-
+  <!-- URUの課題チェック Block -->
   <div class="h-[480px] max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col">
       <%= image_tag "uru.png", class: "rounded-t-lg", alt: "" %>
       <div class="p-3 flex-grow">
@@ -48,51 +40,48 @@
           <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Ur-uの課題チェックが行われます。</p>
       </div>
       <div class="p-3 mt-auto">
-          <%= button_to "実行する", check_uru_task_path, method: :post, id: "execute-button", class: "w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" %>
+          <%= button_to "実行する", check_uru_task_path, method: :post, id: "execute-button-uru", class: "w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800", data: { turbo: "false", action: "click->modal#showLoading" } %>
       </div>
   </div>
-
 </div>
 
-
-
-<div class="modal" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="loadingModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-body text-center">
-        <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">実行中...しばしお待ちを😯</h5>
-        <div class="spinner-border" role="status">
-          <span class="sr-only">Loading...</span>
+<!-- Modal for loading -->
+<div id="loading-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+    <div class="relative p-4 w-full max-w-md max-h-full">
+        <div class="bg-white rounded-lg shadow">
+            <div class="p-4 md:p-5 space-y-4 text-center">
+                <p class="text-base leading-relaxed text-gray-700">実行中...</p>
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div id="log-container" class="h-64 overflow-y-auto">
+                  <!-- ここにリアルタイムでログが追加されます -->
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
-
 
 <script>
     // ローディングモーダルを表示する関数
-    function showLoadingModal() {
-        var myModal = new bootstrap.Modal(document.getElementById('loadingModal'), {});
-        myModal.show();
-    }
+      function showLoadingModal() {
+      var modalElement = document.getElementById('loading-modal');
+      modalElement.classList.remove('hidden');  // Remove the 'hidden' class to show the modal
+      var modalInstance = new bootstrap.Modal(modalElement);
+      modalInstance.show();  // Show the modal using Bootstrap's modal instance
+  }
+
 
     // ローディングモーダルを非表示にする関数
     function hideLoadingModal() {
-        var myModalEl = document.getElementById('loadingModal');
+        var myModalEl = document.getElementById('loading-modal');
         var modal = bootstrap.Modal.getInstance(myModalEl); // モーダルのインスタンスを取得
         modal.hide();
     }
 
     // 例: ボタンクリックでローディングモーダルを表示
-    document.getElementById("execute-button").addEventListener("click", function() {
+    document.getElementById("execute-button-uru").addEventListener("click", function() {
         showLoadingModal();
     });
-
-    document.addEventListener("DOMContentLoaded", function() {
-      // 例: ボタンクリックでローディングモーダルを表示
-      document.getElementById("execute-button-02").addEventListener("click", function() {
-          showLoadingModal();
-      });
-    });
 </script>
+

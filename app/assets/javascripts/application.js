@@ -11,3 +11,5 @@
 // import SimpleBar from 'simplebar'; // SimpleBarをインポート
 // import Pickr from '@simonwep/pickr'; // Pickrをインポート
 // import ApexCharts from 'apexcharts'; // ApexChartsをインポート
+import 'bootstrap';
+import './connect';
