@@ -87,4 +87,3 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'pry'
 gem 'whenever', require: false
 gem 'tailwindcss-rails'
-gem 'rack-timeout', '~> 0.5.0'
