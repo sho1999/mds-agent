@@ -1,1 +1,0 @@
-Rack::Timeout.timeout = 20  # タイムアウトを20秒に設定

@@ -11,6 +11,10 @@ class UruTaskCheck
         options.add_argument('--disable-dev-shm-usage')
 
         driver = Selenium::WebDriver.for :chrome, options: options
+        # タイムアウト設定を追加
+        driver.manage.timeouts.implicit_wait = 30  # 30秒
+        driver.manage.timeouts.page_load = 60  # 60秒
+        driver.manage.timeouts.script_timeout = 60  # 60秒
 
         # ログイン
         driver.get("https://lim-administration.herokuapp.com/affiliaters/login")
