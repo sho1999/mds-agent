@@ -87,3 +87,4 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'pry'
 gem 'whenever', require: false
 gem 'tailwindcss-rails'
+gem 'redis'
