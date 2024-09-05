@@ -2,7 +2,8 @@
 app_path = File.expand_path('../../', __FILE__)
 
 # ワーカープロセスの数を設定
-worker_processes 2
+worker_processes 4  # 例えば、4 に設定
+
 
 # アプリケーションの設置されているディレクトリを指定
 working_directory app_path
