@@ -15,7 +15,7 @@ module AgentMgmtApp
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
 
-    config.hosts << "3.112.60.223" 
+    config.hosts << "13.113.57.198" 
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.

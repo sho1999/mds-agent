@@ -10,7 +10,7 @@ Rails.application.configure do
   Rails.application.config.hosts << "mds-agent.com"
   Rails.application.config.hosts << "www.mds-agent.com"
   # Rails.application.config.hosts << "13.230.216.131" # EC2インスタンスのIPアドレス
-  Rails.application.config.hosts << "3.112.60.223" # EC2インスタンスのIPアドレス
+  Rails.application.config.hosts << "13.113.57.198" # EC2インスタンスのIPアドレス
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
