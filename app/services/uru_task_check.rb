@@ -11,6 +11,10 @@ class UruTaskCheck
         options.add_argument('--disable-dev-shm-usage')
 
         driver = Selenium::WebDriver.for :chrome, options: options
+        # タイムアウト設定を追加
+        driver.manage.timeouts.implicit_wait = 30  # 30秒
+        driver.manage.timeouts.page_load = 60  # 60秒
+        driver.manage.timeouts.script_timeout = 60  # 60秒
 
         # ログイン
         driver.get("https://lim-administration.herokuapp.com/affiliaters/login")
@@ -28,7 +32,8 @@ class UruTaskCheck
 
             # ページ内のaタグの数をカウント
             task_links = driver.find_elements(:css, 'a.tag_student_task')
-            puts "aタグの数: #{task_links.size}"
+            puts "タスク残数: #{task_links.size}"
+            ActionCable.server.broadcast("log_channel", { message: "タスク残数: #{task_links.size}" })
 
             # チェックするタスクが存在しない場合は終了
             break if task_index > task_links.size
@@ -36,6 +41,12 @@ class UruTaskCheck
             task_links[task_index - 1].click
             sleep(1)
             current_url = driver.current_url
+
+            # 名前のテキストを取得
+            name_block = driver.find_element(:css, '.brand-logo').text
+            name = name_block.gsub('さんの 課題状況', '')
+            puts "--#{name}の課題チェックスタート--"
+            # ActionCable.server.broadcast("log_channel", { message: "--#{name}の課題チェックスタート--" })
 
             # ページ全体のtr要素を取得
             rows = driver.find_elements(:css, 'tr')
@@ -50,18 +61,17 @@ class UruTaskCheck
                     first_td_value = td_elements[0].text.to_i
 
                     if first_td_value >= 11
-                        puts "処理を終えます。"
+                        # ActionCable.server.broadcast("log_channel", { message: "idが11以降のタスクです" })
                         task_index += 1
                         break
                     else
-                        puts "次の処理を行います。"
+                        # ActionCable.server.broadcast("log_channel", { message: "idが10以下のタスクなので実行します" })
 
                         row_index = index
 
                         # 次の処理をここに記述
                         pass_input = row.find_element(:css, 'input[name="pass"]')
                         driver.execute_script("arguments[0].value='true';", pass_input)
-                        puts "passフィールドをtrueに設定しました"
 
                         # 更新ボタンをクリック
                         update_button = row.find_element(:css, 'input[type="submit"][value="更新"]')
@@ -69,6 +79,11 @@ class UruTaskCheck
                         sleep(1)
                         update_button.click if update_button.displayed? && update_button.enabled?
                         sleep(1) # ページの更新が反映されるのを待つ
+                        puts "合格しました"
+                        # ActionCable.server.broadcast("log_channel", { message: "合格にしました" })
+
+                        
+
 
                         rows = driver.find_elements(:css, 'tr')
                         next_row = rows[row_index + 1] if row_index + 1 < rows.size
@@ -76,7 +91,9 @@ class UruTaskCheck
                         # 課題解放にチェック
                         release_input = next_row.find_element(:css, 'input[name="release"]')
                         driver.execute_script("arguments[0].value='true';", release_input)
-                        puts "releaseフィールドをtrueに設定しました"
+                        puts "課題を開放しました"
+                        # ActionCable.server.broadcast("log_channel", { message: "課題を開放しました" })
+
 
                         # 更新ボタンをクリック
                         update_button = next_row.find_element(:css, 'input[type="submit"][value="更新"]')
@@ -96,6 +113,9 @@ class UruTaskCheck
                         driver.execute_script("arguments[0].scrollIntoView(true);", update_button)
                         sleep(1)
                         update_button.click if update_button.displayed? && update_button.enabled?
+                        puts "5単位追加しました"
+                        # ActionCable.server.broadcast("log_channel", { message: "5単位追加しました" })
+
 
                         sleep(1)  # スクロール後に少し待機
 
@@ -108,3 +128,4 @@ class UruTaskCheck
         driver.quit()
     end
 end
+

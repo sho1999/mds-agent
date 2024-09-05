@@ -10,7 +10,7 @@ Rails.application.configure do
   Rails.application.config.hosts << "mds-agent.com"
   Rails.application.config.hosts << "www.mds-agent.com"
   # Rails.application.config.hosts << "13.230.216.131" # EC2インスタンスのIPアドレス
-  Rails.application.config.hosts << "3.112.60.223" # EC2インスタンスのIPアドレス
+  Rails.application.config.hosts << "13.113.57.198" # EC2インスタンスのIPアドレス
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
@@ -50,6 +50,7 @@ Rails.application.configure do
   # config.action_cable.mount_path = nil
   # config.action_cable.url = "wss://example.com/cable"
   # config.action_cable.allowed_request_origins = [ "http://example.com", /http:\/\/example.*/ ]
+  # config.action_cable.url = 'redis://localhost:6379/1'
 
   # Assume all access to the app is happening through a SSL-terminating reverse proxy.
   # Can be used together with config.force_ssl for Strict-Transport-Security and secure cookies.
@@ -99,7 +100,6 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
-
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
