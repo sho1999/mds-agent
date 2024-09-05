@@ -46,7 +46,7 @@ class UruTaskCheck
             name_block = driver.find_element(:css, '.brand-logo').text
             name = name_block.gsub('さんの 課題状況', '')
             puts "--#{name}の課題チェックスタート--"
-            ActionCable.server.broadcast("log_channel", { message: "--#{name}の課題チェックスタート--" })
+            # ActionCable.server.broadcast("log_channel", { message: "--#{name}の課題チェックスタート--" })
 
             # ページ全体のtr要素を取得
             rows = driver.find_elements(:css, 'tr')
@@ -61,11 +61,11 @@ class UruTaskCheck
                     first_td_value = td_elements[0].text.to_i
 
                     if first_td_value >= 11
-                        ActionCable.server.broadcast("log_channel", { message: "idが11以降のタスクです" })
+                        # ActionCable.server.broadcast("log_channel", { message: "idが11以降のタスクです" })
                         task_index += 1
                         break
                     else
-                        ActionCable.server.broadcast("log_channel", { message: "idが10以下のタスクなので実行します" })
+                        # ActionCable.server.broadcast("log_channel", { message: "idが10以下のタスクなので実行します" })
 
                         row_index = index
 
@@ -80,7 +80,7 @@ class UruTaskCheck
                         update_button.click if update_button.displayed? && update_button.enabled?
                         sleep(1) # ページの更新が反映されるのを待つ
                         puts "合格しました"
-                        ActionCable.server.broadcast("log_channel", { message: "合格にしました" })
+                        # ActionCable.server.broadcast("log_channel", { message: "合格にしました" })
 
                         
 
@@ -92,7 +92,7 @@ class UruTaskCheck
                         release_input = next_row.find_element(:css, 'input[name="release"]')
                         driver.execute_script("arguments[0].value='true';", release_input)
                         puts "課題を開放しました"
-                        ActionCable.server.broadcast("log_channel", { message: "課題を開放しました" })
+                        # ActionCable.server.broadcast("log_channel", { message: "課題を開放しました" })
 
 
                         # 更新ボタンをクリック
@@ -114,7 +114,7 @@ class UruTaskCheck
                         sleep(1)
                         update_button.click if update_button.displayed? && update_button.enabled?
                         puts "5単位追加しました"
-                        ActionCable.server.broadcast("log_channel", { message: "5単位追加しました" })
+                        # ActionCable.server.broadcast("log_channel", { message: "5単位追加しました" })
 
 
                         sleep(1)  # スクロール後に少し待機

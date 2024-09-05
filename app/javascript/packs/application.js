@@ -14,4 +14,4 @@ import 'bootstrap'
 // import Pickr from '@simonwep/pickr'; // Pickrをインポート
 // import ApexCharts from 'apexcharts'; // ApexChartsをインポート
 
-import './connect';
+// import './connect';
