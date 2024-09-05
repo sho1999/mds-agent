@@ -19,7 +19,7 @@ stderr_path "#{app_path}/log/unicorn.stderr.log"
 stdout_path "#{app_path}/log/unicorn.stdout.log"
 
 # タイムアウトの設定（秒）
-timeout 120
+timeout 240
 
 # プリロード設定（Railsアプリケーションをワーカー起動前にロード）
 preload_app true
